@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,10 +38,10 @@ namespace QuanLyCaoOc
             string PassWork = txtPassWork.Text;
             if (/*Login(UserName, PassWork)*/true)
             {
-
-                frmMain m = new frmMain();
+                AccountDTO LoginAcc = AccountDAO.Instance.GetAccountByUserName(UserName);
+                frmMain f = new frmMain(LoginAcc);
                 this.Hide();
-                m.ShowDialog();
+                f.ShowDialog();
                 this.Show();
 
             }

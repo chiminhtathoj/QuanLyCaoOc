@@ -14,31 +14,81 @@ namespace QuanLyCaoOc
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        public frmMain(AccountDTO acc)
         {
             InitializeComponent();
-            LoadRoom();
+            this.LoginAcc = acc;
+            cbbFloor.SelectedItem = "1";
+            //ChangeAccount(acc.Type);
         }
-        #region Method
-        void LoadRoom()
+        private AccountDTO LoginAcc;
+
+        public AccountDTO LoginAcc1 { get => LoginAcc; set => LoginAcc = value; }
+
+        void LoadRoom(int floor)
         {
-            List<Room> RoomList = RoomDAO.Instance.LoadRoomList();
-            foreach (Room item in RoomList)
+            flpRoom.Controls.Clear();
+            List<RoomDTO> RoomList = RoomDAO.Instance.LoadRoomList();
+            foreach (RoomDTO item in RoomList)
             {
-                Button btn = new Button() { Width = RoomDAO.width, Height = RoomDAO.height };
-                btn.Text = item.ID + "\n" + item.Stt;
-                switch (item.Stt)
+                if (item.Floor == floor)
                 {
-                    case "Trống":
-                        btn.BackColor = Color.Green;
-                        break;
-                    default:
-                        btn.BackColor = Color.Red;
-                        break;
+
+                    Button btn = new Button() { Width = RoomDAO.width, Height = RoomDAO.height };
+                    btn.Text = item.ID + "\n" + item.Stt;
+                    btn.Click += Btn_Click;
+                    btn.Tag = item;
+                    switch (item.Stt)
+                    {
+                        case "Trống":
+                            btn.BackColor = Color.Green;
+                            break;
+                        default:
+                            btn.BackColor = Color.Red;
+                            break;
+                    }
+                    flpRoom.Controls.Add(btn);
+
                 }
-                flpRoom.Controls.Add(btn);
             }
         }
-        #endregion
+        void ShowInfo(int id)
+        {
+        }
+        void ChangeAccount(int type)
+        {
+            adminToolStripMenuItem.Enabled = type == 1;
+            TaiKhoanToolStripMenuItem.Text += " (" + LoginAcc1.Username + ") ";
+        }
+        private void cbbFloor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadRoom(Convert.ToInt32(cbbFloor.SelectedItem));
+        }
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            int RoomID=((sender as Button).Tag as RoomDTO).ID;
+            txtIDRoom.Text = RoomID.ToString();
+            txtAera.Text = ((sender as Button).Tag as RoomDTO).Area.ToString();
+            txtNOW.Text = ((sender as Button).Tag as RoomDTO).Now.ToString();
+            txtAddress.Text= RoomDAO.Instance.GetAddressBuildingByRoomID(RoomID);
+
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProfile f = new frmProfile(LoginAcc);
+            f.ShowDialog();
+        }
+
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdmin f = new frmAdmin();
+            f.ShowDialog();
+        }
     }
 }

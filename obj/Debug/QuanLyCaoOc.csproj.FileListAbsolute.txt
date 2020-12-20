@@ -19,3 +19,5 @@ C:\New folder\PT1\DATH\QuanLyCaoOc\QuanLyCaoOc\QuanLyCaoOc\bin\Debug\DAO.dll.con
 C:\New folder\PT1\DATH\QuanLyCaoOc\QuanLyCaoOc\QuanLyCaoOc\bin\Debug\DTO.pdb
 C:\New folder\PT1\DATH\QuanLyCaoOc\QuanLyCaoOc\QuanLyCaoOc\bin\Debug\DTO.dll.config
 C:\New folder\PT1\DATH\QuanLyCaoOc\QuanLyCaoOc\QuanLyCaoOc\obj\Debug\QuanLyCaoOc.csproj.CopyComplete
+C:\New folder\PT1\DATH\QuanLyCaoOc\QuanLyCaoOc\QuanLyCaoOc\obj\Debug\QuanLyCaoOc.frmProfile.resources
+C:\New folder\PT1\DATH\QuanLyCaoOc\QuanLyCaoOc\QuanLyCaoOc\obj\Debug\QuanLyCaoOc.frmAdmin.resources
