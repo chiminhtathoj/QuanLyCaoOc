@@ -38,6 +38,10 @@ namespace QuanLyCaoOc
             this.btnDeleteCus = new System.Windows.Forms.Button();
             this.btnInsertCus = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.txtIDCUS = new System.Windows.Forms.TextBox();
+            this.txtNameCus = new System.Windows.Forms.TextBox();
+            this.txtSexCus = new System.Windows.Forms.TextBox();
+            this.txtPhoneCus = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,11 +54,7 @@ namespace QuanLyCaoOc
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtgvCustomer = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.txtPhoneCus = new System.Windows.Forms.TextBox();
-            this.txtDOBCus = new System.Windows.Forms.TextBox();
-            this.txtSexCus = new System.Windows.Forms.TextBox();
-            this.txtNameCus = new System.Windows.Forms.TextBox();
-            this.txtIDCUS = new System.Windows.Forms.TextBox();
+            this.dtpDOBCus = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.tcAdmin.SuspendLayout();
             this.tpCustomer.SuspendLayout();
@@ -126,6 +126,7 @@ namespace QuanLyCaoOc
             this.btnEditCus.TabIndex = 8;
             this.btnEditCus.Text = "Sửa";
             this.btnEditCus.UseVisualStyleBackColor = true;
+            this.btnEditCus.Click += new System.EventHandler(this.btnEditCus_Click);
             // 
             // btnDeleteCus
             // 
@@ -135,6 +136,7 @@ namespace QuanLyCaoOc
             this.btnDeleteCus.TabIndex = 7;
             this.btnDeleteCus.Text = "Xóa";
             this.btnDeleteCus.UseVisualStyleBackColor = true;
+            this.btnDeleteCus.Click += new System.EventHandler(this.btnDeleteCus_Click);
             // 
             // btnInsertCus
             // 
@@ -144,13 +146,14 @@ namespace QuanLyCaoOc
             this.btnInsertCus.TabIndex = 6;
             this.btnInsertCus.Text = "Thêm";
             this.btnInsertCus.UseVisualStyleBackColor = true;
+            this.btnInsertCus.Click += new System.EventHandler(this.btnInsertCus_Click);
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.dtpDOBCus);
             this.panel5.Controls.Add(this.txtIDCUS);
             this.panel5.Controls.Add(this.txtNameCus);
             this.panel5.Controls.Add(this.txtSexCus);
-            this.panel5.Controls.Add(this.txtDOBCus);
             this.panel5.Controls.Add(this.txtPhoneCus);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Controls.Add(this.label5);
@@ -162,6 +165,35 @@ namespace QuanLyCaoOc
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(320, 309);
             this.panel5.TabIndex = 2;
+            // 
+            // txtIDCUS
+            // 
+            this.txtIDCUS.Location = new System.Drawing.Point(137, 49);
+            this.txtIDCUS.Name = "txtIDCUS";
+            this.txtIDCUS.ReadOnly = true;
+            this.txtIDCUS.Size = new System.Drawing.Size(174, 20);
+            this.txtIDCUS.TabIndex = 1;
+            // 
+            // txtNameCus
+            // 
+            this.txtNameCus.Location = new System.Drawing.Point(137, 105);
+            this.txtNameCus.Name = "txtNameCus";
+            this.txtNameCus.Size = new System.Drawing.Size(174, 20);
+            this.txtNameCus.TabIndex = 2;
+            // 
+            // txtSexCus
+            // 
+            this.txtSexCus.Location = new System.Drawing.Point(137, 158);
+            this.txtSexCus.Name = "txtSexCus";
+            this.txtSexCus.Size = new System.Drawing.Size(174, 20);
+            this.txtSexCus.TabIndex = 3;
+            // 
+            // txtPhoneCus
+            // 
+            this.txtPhoneCus.Location = new System.Drawing.Point(137, 265);
+            this.txtPhoneCus.Name = "txtPhoneCus";
+            this.txtPhoneCus.Size = new System.Drawing.Size(174, 20);
+            this.txtPhoneCus.TabIndex = 5;
             // 
             // label6
             // 
@@ -276,41 +308,13 @@ namespace QuanLyCaoOc
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // txtPhoneCus
+            // dtpDOBCus
             // 
-            this.txtPhoneCus.Location = new System.Drawing.Point(137, 265);
-            this.txtPhoneCus.Name = "txtPhoneCus";
-            this.txtPhoneCus.Size = new System.Drawing.Size(174, 20);
-            this.txtPhoneCus.TabIndex = 5;
-            // 
-            // txtDOBCus
-            // 
-            this.txtDOBCus.Location = new System.Drawing.Point(137, 213);
-            this.txtDOBCus.Name = "txtDOBCus";
-            this.txtDOBCus.Size = new System.Drawing.Size(174, 20);
-            this.txtDOBCus.TabIndex = 4;
-            // 
-            // txtSexCus
-            // 
-            this.txtSexCus.Location = new System.Drawing.Point(137, 158);
-            this.txtSexCus.Name = "txtSexCus";
-            this.txtSexCus.Size = new System.Drawing.Size(174, 20);
-            this.txtSexCus.TabIndex = 3;
-            // 
-            // txtNameCus
-            // 
-            this.txtNameCus.Location = new System.Drawing.Point(137, 105);
-            this.txtNameCus.Name = "txtNameCus";
-            this.txtNameCus.Size = new System.Drawing.Size(174, 20);
-            this.txtNameCus.TabIndex = 2;
-            // 
-            // txtIDCUS
-            // 
-            this.txtIDCUS.Location = new System.Drawing.Point(137, 49);
-            this.txtIDCUS.Name = "txtIDCUS";
-            this.txtIDCUS.ReadOnly = true;
-            this.txtIDCUS.Size = new System.Drawing.Size(174, 20);
-            this.txtIDCUS.TabIndex = 1;
+            this.dtpDOBCus.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDOBCus.Location = new System.Drawing.Point(137, 212);
+            this.dtpDOBCus.Name = "dtpDOBCus";
+            this.dtpDOBCus.Size = new System.Drawing.Size(174, 20);
+            this.dtpDOBCus.TabIndex = 4;
             // 
             // frmAdmin
             // 
@@ -361,7 +365,7 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.TextBox txtIDCUS;
         private System.Windows.Forms.TextBox txtNameCus;
         private System.Windows.Forms.TextBox txtSexCus;
-        private System.Windows.Forms.TextBox txtDOBCus;
         private System.Windows.Forms.TextBox txtPhoneCus;
+        private System.Windows.Forms.DateTimePicker dtpDOBCus;
     }
 }
