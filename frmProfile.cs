@@ -25,7 +25,7 @@ namespace QuanLyCaoOc
 
         void ChangeAcc(AccountDTO acc)
         {
-            txtUserNameProfile.Text = Loginacc.Username;
+            txtUserNameProfile.Text = Loginacc.TenDangNhap;
 
         }
         void UpdateAcc()

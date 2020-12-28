@@ -38,9 +38,10 @@ namespace QuanLyCaoOc
             this.btnDeleteCus = new System.Windows.Forms.Button();
             this.btnInsertCus = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.cbbSexCus = new System.Windows.Forms.ComboBox();
+            this.dtpDOBCus = new System.Windows.Forms.DateTimePicker();
             this.txtIDCUS = new System.Windows.Forms.TextBox();
             this.txtNameCus = new System.Windows.Forms.TextBox();
-            this.txtSexCus = new System.Windows.Forms.TextBox();
             this.txtPhoneCus = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,8 +54,24 @@ namespace QuanLyCaoOc
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtgvCustomer = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dtpDOBCus = new System.Windows.Forms.DateTimePicker();
+            this.tpAccount = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnLoadUser = new System.Windows.Forms.Button();
+            this.btnEditUser = new System.Windows.Forms.Button();
+            this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.btnAddUser = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.cbbUserType = new System.Windows.Forms.ComboBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnFindUser = new System.Windows.Forms.Button();
+            this.txtFindUser = new System.Windows.Forms.TextBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.dtgvAccount = new System.Windows.Forms.DataGridView();
+            this.btnResetAccPW = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tcAdmin.SuspendLayout();
             this.tpCustomer.SuspendLayout();
@@ -63,6 +80,12 @@ namespace QuanLyCaoOc
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCustomer)).BeginInit();
+            this.tpAccount.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -76,7 +99,7 @@ namespace QuanLyCaoOc
             // tcAdmin
             // 
             this.tcAdmin.Controls.Add(this.tpCustomer);
-            this.tcAdmin.Controls.Add(this.tabPage2);
+            this.tcAdmin.Controls.Add(this.tpAccount);
             this.tcAdmin.Location = new System.Drawing.Point(3, 3);
             this.tcAdmin.Name = "tcAdmin";
             this.tcAdmin.SelectedIndex = 0;
@@ -150,10 +173,10 @@ namespace QuanLyCaoOc
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.cbbSexCus);
             this.panel5.Controls.Add(this.dtpDOBCus);
             this.panel5.Controls.Add(this.txtIDCUS);
             this.panel5.Controls.Add(this.txtNameCus);
-            this.panel5.Controls.Add(this.txtSexCus);
             this.panel5.Controls.Add(this.txtPhoneCus);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Controls.Add(this.label5);
@@ -165,6 +188,26 @@ namespace QuanLyCaoOc
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(320, 309);
             this.panel5.TabIndex = 2;
+            // 
+            // cbbSexCus
+            // 
+            this.cbbSexCus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbSexCus.FormattingEnabled = true;
+            this.cbbSexCus.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ"});
+            this.cbbSexCus.Location = new System.Drawing.Point(137, 154);
+            this.cbbSexCus.Name = "cbbSexCus";
+            this.cbbSexCus.Size = new System.Drawing.Size(174, 21);
+            this.cbbSexCus.TabIndex = 7;
+            // 
+            // dtpDOBCus
+            // 
+            this.dtpDOBCus.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDOBCus.Location = new System.Drawing.Point(137, 212);
+            this.dtpDOBCus.Name = "dtpDOBCus";
+            this.dtpDOBCus.Size = new System.Drawing.Size(174, 20);
+            this.dtpDOBCus.TabIndex = 4;
             // 
             // txtIDCUS
             // 
@@ -181,19 +224,13 @@ namespace QuanLyCaoOc
             this.txtNameCus.Size = new System.Drawing.Size(174, 20);
             this.txtNameCus.TabIndex = 2;
             // 
-            // txtSexCus
-            // 
-            this.txtSexCus.Location = new System.Drawing.Point(137, 158);
-            this.txtSexCus.Name = "txtSexCus";
-            this.txtSexCus.Size = new System.Drawing.Size(174, 20);
-            this.txtSexCus.TabIndex = 3;
-            // 
             // txtPhoneCus
             // 
             this.txtPhoneCus.Location = new System.Drawing.Point(137, 265);
             this.txtPhoneCus.Name = "txtPhoneCus";
             this.txtPhoneCus.Size = new System.Drawing.Size(174, 20);
             this.txtPhoneCus.TabIndex = 5;
+            this.txtPhoneCus.TextChanged += new System.EventHandler(this.txtPhoneCus_TextChanged);
             // 
             // label6
             // 
@@ -298,23 +335,186 @@ namespace QuanLyCaoOc
             this.dtgvCustomer.Size = new System.Drawing.Size(592, 452);
             this.dtgvCustomer.TabIndex = 0;
             // 
-            // tabPage2
+            // tpAccount
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(933, 470);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tpAccount.Controls.Add(this.panel6);
+            this.tpAccount.Location = new System.Drawing.Point(4, 22);
+            this.tpAccount.Name = "tpAccount";
+            this.tpAccount.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAccount.Size = new System.Drawing.Size(933, 470);
+            this.tpAccount.TabIndex = 1;
+            this.tpAccount.Text = "Tài khoản";
+            this.tpAccount.UseVisualStyleBackColor = true;
             // 
-            // dtpDOBCus
+            // panel6
             // 
-            this.dtpDOBCus.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDOBCus.Location = new System.Drawing.Point(137, 212);
-            this.dtpDOBCus.Name = "dtpDOBCus";
-            this.dtpDOBCus.Size = new System.Drawing.Size(174, 20);
-            this.dtpDOBCus.TabIndex = 4;
+            this.panel6.Controls.Add(this.btnLoadUser);
+            this.panel6.Controls.Add(this.btnEditUser);
+            this.panel6.Controls.Add(this.btnDeleteUser);
+            this.panel6.Controls.Add(this.btnAddUser);
+            this.panel6.Controls.Add(this.panel7);
+            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Controls.Add(this.panel9);
+            this.panel6.Location = new System.Drawing.Point(3, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(927, 464);
+            this.panel6.TabIndex = 1;
+            // 
+            // btnLoadUser
+            // 
+            this.btnLoadUser.Location = new System.Drawing.Point(809, 418);
+            this.btnLoadUser.Name = "btnLoadUser";
+            this.btnLoadUser.Size = new System.Drawing.Size(85, 40);
+            this.btnLoadUser.TabIndex = 9;
+            this.btnLoadUser.Text = "Xem";
+            this.btnLoadUser.UseVisualStyleBackColor = true;
+            this.btnLoadUser.Click += new System.EventHandler(this.btnLoadUser_Click);
+            // 
+            // btnEditUser
+            // 
+            this.btnEditUser.Location = new System.Drawing.Point(617, 418);
+            this.btnEditUser.Name = "btnEditUser";
+            this.btnEditUser.Size = new System.Drawing.Size(85, 40);
+            this.btnEditUser.TabIndex = 8;
+            this.btnEditUser.Text = "Sửa";
+            this.btnEditUser.UseVisualStyleBackColor = true;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
+            // 
+            // btnDeleteUser
+            // 
+            this.btnDeleteUser.Location = new System.Drawing.Point(809, 352);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(85, 40);
+            this.btnDeleteUser.TabIndex = 7;
+            this.btnDeleteUser.Text = "Xóa";
+            this.btnDeleteUser.UseVisualStyleBackColor = true;
+            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            // 
+            // btnAddUser
+            // 
+            this.btnAddUser.Location = new System.Drawing.Point(617, 352);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(85, 40);
+            this.btnAddUser.TabIndex = 6;
+            this.btnAddUser.Text = "Thêm";
+            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.btnResetAccPW);
+            this.panel7.Controls.Add(this.cbbUserType);
+            this.panel7.Controls.Add(this.txtUserName);
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Controls.Add(this.label11);
+            this.panel7.Controls.Add(this.label12);
+            this.panel7.Location = new System.Drawing.Point(604, 37);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(320, 309);
+            this.panel7.TabIndex = 2;
+            // 
+            // cbbUserType
+            // 
+            this.cbbUserType.FormattingEnabled = true;
+            this.cbbUserType.Items.AddRange(new object[] {
+            "Admin",
+            "Quản Lý",
+            "Lễ Tân",
+            "Kế Toán"});
+            this.cbbUserType.Location = new System.Drawing.Point(139, 104);
+            this.cbbUserType.Name = "cbbUserType";
+            this.cbbUserType.Size = new System.Drawing.Size(172, 21);
+            this.cbbUserType.TabIndex = 4;
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.Location = new System.Drawing.Point(139, 48);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(174, 20);
+            this.txtUserName.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(8, 104);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(48, 19);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Loại:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 49);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(134, 19);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Tên Đăng Nhập:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(49, 2);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(231, 24);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Thông tin người dùng";
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.btnFindUser);
+            this.panel8.Controls.Add(this.txtFindUser);
+            this.panel8.Location = new System.Drawing.Point(604, 6);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(320, 30);
+            this.panel8.TabIndex = 1;
+            // 
+            // btnFindUser
+            // 
+            this.btnFindUser.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFindUser.Location = new System.Drawing.Point(222, 2);
+            this.btnFindUser.Name = "btnFindUser";
+            this.btnFindUser.Size = new System.Drawing.Size(89, 23);
+            this.btnFindUser.TabIndex = 3;
+            this.btnFindUser.Text = "Tìm kiếm";
+            this.btnFindUser.UseVisualStyleBackColor = true;
+            // 
+            // txtFindUser
+            // 
+            this.txtFindUser.Location = new System.Drawing.Point(3, 3);
+            this.txtFindUser.Name = "txtFindUser";
+            this.txtFindUser.Size = new System.Drawing.Size(213, 20);
+            this.txtFindUser.TabIndex = 0;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.dtgvAccount);
+            this.panel9.Location = new System.Drawing.Point(3, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(598, 455);
+            this.panel9.TabIndex = 0;
+            // 
+            // dtgvAccount
+            // 
+            this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvAccount.Location = new System.Drawing.Point(3, 3);
+            this.dtgvAccount.Name = "dtgvAccount";
+            this.dtgvAccount.Size = new System.Drawing.Size(592, 452);
+            this.dtgvAccount.TabIndex = 0;
+            // 
+            // btnResetAccPW
+            // 
+            this.btnResetAccPW.Location = new System.Drawing.Point(201, 152);
+            this.btnResetAccPW.Name = "btnResetAccPW";
+            this.btnResetAccPW.Size = new System.Drawing.Size(110, 23);
+            this.btnResetAccPW.TabIndex = 5;
+            this.btnResetAccPW.Text = "Đặt lại mật khẩu";
+            this.btnResetAccPW.UseVisualStyleBackColor = true;
+            this.btnResetAccPW.Click += new System.EventHandler(this.btnResetAccPW_Click);
             // 
             // frmAdmin
             // 
@@ -335,6 +535,14 @@ namespace QuanLyCaoOc
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCustomer)).EndInit();
+            this.tpAccount.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -344,7 +552,7 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tcAdmin;
         private System.Windows.Forms.TabPage tpCustomer;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tpAccount;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox textBox1;
@@ -364,8 +572,25 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.Button btnInsertCus;
         private System.Windows.Forms.TextBox txtIDCUS;
         private System.Windows.Forms.TextBox txtNameCus;
-        private System.Windows.Forms.TextBox txtSexCus;
         private System.Windows.Forms.TextBox txtPhoneCus;
         private System.Windows.Forms.DateTimePicker dtpDOBCus;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnLoadUser;
+        private System.Windows.Forms.Button btnEditUser;
+        private System.Windows.Forms.Button btnDeleteUser;
+        private System.Windows.Forms.Button btnAddUser;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button btnFindUser;
+        private System.Windows.Forms.TextBox txtFindUser;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.DataGridView dtgvAccount;
+        private System.Windows.Forms.ComboBox cbbUserType;
+        private System.Windows.Forms.ComboBox cbbSexCus;
+        private System.Windows.Forms.Button btnResetAccPW;
     }
 }

@@ -19,7 +19,7 @@ namespace QuanLyCaoOc
             InitializeComponent();
             this.LoginAcc = acc;
             cbbFloor.SelectedItem = "1";
-            //ChangeAccount(acc.Type);
+            //ChangeAccount(acc.Loai);
         }
         private AccountDTO LoginAcc;
 
@@ -55,10 +55,10 @@ namespace QuanLyCaoOc
         void ShowInfo(int id)
         {
         }
-        void ChangeAccount(int type)
+        void ChangeAccount(string type)
         {
-            adminToolStripMenuItem.Enabled = type == 1;
-            TaiKhoanToolStripMenuItem.Text += " (" + LoginAcc1.Username + ") ";
+            adminToolStripMenuItem.Enabled = type == "Admin";
+            TaiKhoanToolStripMenuItem.Text += " (" + LoginAcc1.TenDangNhap + ") ";
         }
         private void cbbFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -76,7 +76,7 @@ namespace QuanLyCaoOc
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
@@ -88,6 +88,7 @@ namespace QuanLyCaoOc
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAdmin f = new frmAdmin();
+            f.LoginAccount = LoginAcc;
             f.ShowDialog();
         }
     }
