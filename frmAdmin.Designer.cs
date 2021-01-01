@@ -50,8 +50,8 @@ namespace QuanLyCaoOc
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnSearchCus = new System.Windows.Forms.Button();
+            this.txtSearchCus = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtgvCustomer = new System.Windows.Forms.DataGridView();
             this.tpAccount = new System.Windows.Forms.TabPage();
@@ -61,17 +61,17 @@ namespace QuanLyCaoOc
             this.btnDeleteUser = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnResetAccPW = new System.Windows.Forms.Button();
             this.cbbUserType = new System.Windows.Forms.ComboBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.btnFindUser = new System.Windows.Forms.Button();
-            this.txtFindUser = new System.Windows.Forms.TextBox();
+            this.btnSearchUser = new System.Windows.Forms.Button();
+            this.txtSearchUser = new System.Windows.Forms.TextBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
-            this.btnResetAccPW = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tcAdmin.SuspendLayout();
             this.tpCustomer.SuspendLayout();
@@ -294,29 +294,30 @@ namespace QuanLyCaoOc
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.btnLogin);
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.btnSearchCus);
+            this.panel4.Controls.Add(this.txtSearchCus);
             this.panel4.Location = new System.Drawing.Point(604, 6);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(320, 30);
             this.panel4.TabIndex = 1;
             // 
-            // btnLogin
+            // btnSearchCus
             // 
-            this.btnLogin.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(222, 2);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(89, 23);
-            this.btnLogin.TabIndex = 3;
-            this.btnLogin.Text = "Tìm kiếm";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnSearchCus.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchCus.Location = new System.Drawing.Point(222, 2);
+            this.btnSearchCus.Name = "btnSearchCus";
+            this.btnSearchCus.Size = new System.Drawing.Size(89, 23);
+            this.btnSearchCus.TabIndex = 3;
+            this.btnSearchCus.Text = "Tìm kiếm";
+            this.btnSearchCus.UseVisualStyleBackColor = true;
+            this.btnSearchCus.Click += new System.EventHandler(this.btnSearchCus_Click);
             // 
-            // textBox1
+            // txtSearchCus
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(213, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtSearchCus.Location = new System.Drawing.Point(3, 3);
+            this.txtSearchCus.Name = "txtSearchCus";
+            this.txtSearchCus.Size = new System.Drawing.Size(213, 20);
+            this.txtSearchCus.TabIndex = 0;
             // 
             // panel3
             // 
@@ -413,6 +414,16 @@ namespace QuanLyCaoOc
             this.panel7.Size = new System.Drawing.Size(320, 309);
             this.panel7.TabIndex = 2;
             // 
+            // btnResetAccPW
+            // 
+            this.btnResetAccPW.Location = new System.Drawing.Point(201, 152);
+            this.btnResetAccPW.Name = "btnResetAccPW";
+            this.btnResetAccPW.Size = new System.Drawing.Size(110, 23);
+            this.btnResetAccPW.TabIndex = 5;
+            this.btnResetAccPW.Text = "Đặt lại mật khẩu";
+            this.btnResetAccPW.UseVisualStyleBackColor = true;
+            this.btnResetAccPW.Click += new System.EventHandler(this.btnResetAccPW_Click);
+            // 
             // cbbUserType
             // 
             this.cbbUserType.FormattingEnabled = true;
@@ -465,29 +476,30 @@ namespace QuanLyCaoOc
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.btnFindUser);
-            this.panel8.Controls.Add(this.txtFindUser);
+            this.panel8.Controls.Add(this.btnSearchUser);
+            this.panel8.Controls.Add(this.txtSearchUser);
             this.panel8.Location = new System.Drawing.Point(604, 6);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(320, 30);
             this.panel8.TabIndex = 1;
             // 
-            // btnFindUser
+            // btnSearchUser
             // 
-            this.btnFindUser.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFindUser.Location = new System.Drawing.Point(222, 2);
-            this.btnFindUser.Name = "btnFindUser";
-            this.btnFindUser.Size = new System.Drawing.Size(89, 23);
-            this.btnFindUser.TabIndex = 3;
-            this.btnFindUser.Text = "Tìm kiếm";
-            this.btnFindUser.UseVisualStyleBackColor = true;
+            this.btnSearchUser.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchUser.Location = new System.Drawing.Point(222, 2);
+            this.btnSearchUser.Name = "btnSearchUser";
+            this.btnSearchUser.Size = new System.Drawing.Size(89, 23);
+            this.btnSearchUser.TabIndex = 3;
+            this.btnSearchUser.Text = "Tìm kiếm";
+            this.btnSearchUser.UseVisualStyleBackColor = true;
+            this.btnSearchUser.Click += new System.EventHandler(this.btnSearchUser_Click);
             // 
-            // txtFindUser
+            // txtSearchUser
             // 
-            this.txtFindUser.Location = new System.Drawing.Point(3, 3);
-            this.txtFindUser.Name = "txtFindUser";
-            this.txtFindUser.Size = new System.Drawing.Size(213, 20);
-            this.txtFindUser.TabIndex = 0;
+            this.txtSearchUser.Location = new System.Drawing.Point(3, 3);
+            this.txtSearchUser.Name = "txtSearchUser";
+            this.txtSearchUser.Size = new System.Drawing.Size(213, 20);
+            this.txtSearchUser.TabIndex = 0;
             // 
             // panel9
             // 
@@ -506,18 +518,9 @@ namespace QuanLyCaoOc
             this.dtgvAccount.Size = new System.Drawing.Size(592, 452);
             this.dtgvAccount.TabIndex = 0;
             // 
-            // btnResetAccPW
-            // 
-            this.btnResetAccPW.Location = new System.Drawing.Point(201, 152);
-            this.btnResetAccPW.Name = "btnResetAccPW";
-            this.btnResetAccPW.Size = new System.Drawing.Size(110, 23);
-            this.btnResetAccPW.TabIndex = 5;
-            this.btnResetAccPW.Text = "Đặt lại mật khẩu";
-            this.btnResetAccPW.UseVisualStyleBackColor = true;
-            this.btnResetAccPW.Click += new System.EventHandler(this.btnResetAccPW_Click);
-            // 
             // frmAdmin
             // 
+            this.AcceptButton = this.btnSearchCus;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 523);
@@ -555,11 +558,11 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.TabPage tpAccount;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearchCus;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dtgvCustomer;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnSearchCus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -585,8 +588,8 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Button btnFindUser;
-        private System.Windows.Forms.TextBox txtFindUser;
+        private System.Windows.Forms.Button btnSearchUser;
+        private System.Windows.Forms.TextBox txtSearchUser;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.DataGridView dtgvAccount;
         private System.Windows.Forms.ComboBox cbbUserType;

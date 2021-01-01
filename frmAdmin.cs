@@ -78,9 +78,31 @@ namespace QuanLyCaoOc
         private void btnInsertCus_Click(object sender, EventArgs e)
         {
             string name = txtNameCus.Text;
-            int phone = int.Parse(txtPhoneCus.Text);
+            int phone = 0;
+            int.TryParse(txtPhoneCus.Text,out phone); // không dùng tryparse sẻ lỗi
             DateTime DOB = dtpDOBCus.Value;
             string sex = cbbSexCus.Text;
+            if (string.IsNullOrWhiteSpace(txtNameCus.Text)) // check các textbox phải điền đầy đủ mới cho thêm 
+            {
+                MessageBox.Show("Vui lòng điền tên", "thông báo");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtPhoneCus.Text))
+            {
+                MessageBox.Show("Vui lòng điền Số điện thoại", "thông báo");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(dtpDOBCus.Value.ToString()))
+            {
+                MessageBox.Show("Vui lòng chọn ngày sinh", "thông báo");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cbbSexCus.Text))
+            {
+                MessageBox.Show("Vui lòng chọn giới tính", "thông báo");
+                return;
+            }
+
             if (CustomerDAO.Instance.InsertCus(name, phone, DOB, sex))
             {
                 MessageBox.Show("Thêm thành công", "Thông báo");
@@ -92,11 +114,19 @@ namespace QuanLyCaoOc
 
         private void btnEditCus_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(txtIDCUS.Text);
+            int id = 0;
+            int.TryParse(txtIDCUS.Text,out id);
             string name = txtNameCus.Text;
-            int phone = int.Parse(txtPhoneCus.Text);
+            int phone = 0;
+            int.TryParse(txtPhoneCus.Text,out phone);
             DateTime DOB = dtpDOBCus.Value;
             string sex = cbbSexCus.Text;
+            if (string.IsNullOrWhiteSpace(txtNameCus.Text) || string.IsNullOrWhiteSpace(txtIDCUS.Text) || string.IsNullOrWhiteSpace(dtpDOBCus.Value.ToString()) ||
+                string.IsNullOrWhiteSpace(txtPhoneCus.Text) || string.IsNullOrWhiteSpace(cbbSexCus.Text)) // check các textbox phải điền đầy đủ mới cho sửa 
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng cần sửa", "thông báo");
+                return;
+            }
             if (CustomerDAO.Instance.UpdateCus(id,name, phone, DOB, sex))
             {
                 MessageBox.Show("Sửa thành công", "Thông báo");
@@ -108,7 +138,14 @@ namespace QuanLyCaoOc
 
         private void btnDeleteCus_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(txtIDCUS.Text);
+            int id = 0;
+            int.TryParse(txtIDCUS.Text,out id);
+            if (string.IsNullOrWhiteSpace(txtNameCus.Text) || string.IsNullOrWhiteSpace(txtIDCUS.Text) || string.IsNullOrWhiteSpace(dtpDOBCus.Value.ToString()) ||
+                string.IsNullOrWhiteSpace(txtPhoneCus.Text) || string.IsNullOrWhiteSpace(cbbSexCus.Text)) // check các textbox phải điền đầy đủ mới cho sửa 
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng cần xóa", "thông báo");
+                return;
+            }
             BillInfoDAO.Instance.DeleteBillInfoByListCustomerID(id);
             BillDAO.Instance.DeleteBillByCustomerID(id);
             ContractRenewal_InfoDAO.Instance.DeleteListContractRenewal_InfoByCustomerID(id);
@@ -142,6 +179,16 @@ namespace QuanLyCaoOc
         {
             string username = txtUserName.Text;
             string type = cbbUserType.Text;
+            if (string.IsNullOrWhiteSpace(txtUserName.Text)) // check các textbox phải điền đầy đủ mới cho thêm 
+            {
+                MessageBox.Show("Vui lòng điền tên", "thông báo");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cbbUserType.Text))
+            {
+                MessageBox.Show("Vui lòng chọn loại người dùng", "thông báo");
+                return;
+            }
             if (AccountDAO.Instance.InsertAcc(username, type))
             {
                 MessageBox.Show("Thêm thành công", "Thông báo");
@@ -154,7 +201,14 @@ namespace QuanLyCaoOc
         private void btnDeleteUser_Click(object sender, EventArgs e)
         {
             string username = txtUserName.Text;
-            if (LoginAccount.TenDangNhap.Equals(username))
+            if (string.IsNullOrWhiteSpace(txtUserName.Text)) // phải chọn người xóa
+            {
+                MessageBox.Show("Vui lòng chọn người dùng cần xóa", "thông báo");
+                return;
+            }
+            if (LoginAccount.TenDangNhap.Equals(
+                
+                ))
             {
                 MessageBox.Show("Không thể tự hủy bản thân mình được!!!", "Thông báo");
                 return;
@@ -172,6 +226,16 @@ namespace QuanLyCaoOc
         {
             string username = txtUserName.Text;
             string type = cbbUserType.Text;
+            if (string.IsNullOrWhiteSpace(txtUserName.Text)) // check các textbox phải điền đầy đủ mới cho thêm 
+            {
+                MessageBox.Show("Vui lòng chọn người dùng cần sửa", "thông báo");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(cbbUserType.Text))
+            {
+                MessageBox.Show("Vui lòng chọn loại người dùng cần sửa", "thông báo");
+                return;
+            }
             if (AccountDAO.Instance.UpdateAcc(username, type))
             {
                 MessageBox.Show("Sửa thành công", "Thông báo");
@@ -191,6 +255,26 @@ namespace QuanLyCaoOc
             }
             else
                 MessageBox.Show("Sửa thất bại", "Thông báo");
+        }
+        List<CustomerDTO> SearchCusByName(string name)
+        {
+            List<CustomerDTO> listCus =CustomerDAO.Instance.SearchCusomterByName(name);
+            return listCus;
+        }
+
+        private void btnSearchCus_Click(object sender, EventArgs e)
+        {
+           CustomerBinding.DataSource= SearchCusByName(txtSearchCus.Text);
+           
+        }
+
+        DataTable SearchAccByName(string name)
+        {
+            return AccountDAO.Instance.SearchAccByUserName(name);
+        }
+        private void btnSearchUser_Click(object sender, EventArgs e)
+        {
+            AccountBinding.DataSource = SearchAccByName(txtSearchUser.Text);
         }
     }
 }

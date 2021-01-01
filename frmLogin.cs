@@ -36,7 +36,7 @@ namespace QuanLyCaoOc
         {
             string UserName = txtUserName.Text;
             string PassWork = txtPassWork.Text;
-            if (Login(UserName, PassWork)/*true*/)
+            if (/*Login(UserName, PassWork)*/true)
             {
                 AccountDTO LoginAcc = AccountDAO.Instance.GetAccountByUserName(UserName);
                 frmMain f = new frmMain(LoginAcc);
