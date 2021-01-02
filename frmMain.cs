@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAO;
@@ -33,6 +35,8 @@ namespace QuanLyCaoOc
 
         void LoadRoom(int floor)
         {
+            CultureInfo culture = new CultureInfo("vi-VN"); //Chuyển culture về VN
+            Thread.CurrentThread.CurrentCulture = culture; // chỉ dùng trong thread này
             flpRoom.Controls.Clear();
             List<RoomDTO> RoomList = RoomDAO.Instance.LoadRoomList();
             foreach (RoomDTO item in RoomList)
@@ -59,8 +63,33 @@ namespace QuanLyCaoOc
                 }
             }
         }
-        void ShowInfo(int id)
+        List<RoomDTO> ShowListRoomRent(int id)
         {
+            List<RoomDTO> listRoom = new List<RoomDTO>();
+            DataTable data = RoomDAO.Instance.GetRoomByRoomid(id);
+            foreach (DataRow item in data.Rows)
+            {
+                RoomDTO room = new RoomDTO(item);
+                listRoom.Add(room);
+                
+            }
+            
+            foreach (RoomDTO item in listRoom)
+            {
+                if (lvRoom.FindItemWithText(item.MaPhong.ToString()) != null)
+                {
+                    MessageBox.Show("Phòng đả được thêm vào danh sách vui lòng thêm phòng khác !");
+                    return listRoom;
+                }
+                ListViewItem lvItem = new ListViewItem(item.MaPhong.ToString());
+                float Price = item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000;
+                lvItem.SubItems.Add(item.Tang.ToString());
+                lvItem.SubItems.Add(item.DTSuDung.ToString());
+                lvItem.SubItems.Add(item.SoChoLamViec.ToString());
+                lvItem.SubItems.Add(Price.ToString("c"));
+                lvRoom.Items.Add(lvItem);
+            }
+            return listRoom;
         }
         void ChangeAccount(string type)
         {
@@ -78,7 +107,6 @@ namespace QuanLyCaoOc
             txtAera.Text = ((sender as Button).Tag as RoomDTO).DTSuDung.ToString();
             txtNOW.Text = ((sender as Button).Tag as RoomDTO).SoChoLamViec.ToString();
             txtAddress.Text= RoomDAO.Instance.GetAddressBuildingByRoomID(RoomID);
-
         }
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -113,6 +141,11 @@ namespace QuanLyCaoOc
             GetIdRoom(GetCurrentRoomID());
             f.ShowDialog();
             this.Show();
+        }
+
+        private void btnAddListRoomRent_Click(object sender, EventArgs e)
+        {
+            ShowListRoomRent(int.Parse(txtIDRoom.Text));
         }
     }
 }

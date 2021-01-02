@@ -32,7 +32,7 @@ namespace QuanLyCaoOc
                 RoomDTO room = new RoomDTO(item);
                 txtIDRent.Text = room.MaPhong.ToString();
                 float Price = room.GiaCoBan + room.SoChoLamViec * 200000 + room.Tang * 500000;
-                txtPriceRent.Text = Price.ToString() + " vnđ";
+                txtPriceRent.Text = Price.ToString("c");
             } 
            
         }

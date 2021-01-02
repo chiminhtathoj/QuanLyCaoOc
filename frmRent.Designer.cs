@@ -35,14 +35,14 @@ namespace QuanLyCaoOc
             this.txtPriceRent = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtNameCusRent = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dtgvListCusRent = new System.Windows.Forms.DataGridView();
-            this.txtIDCusRent = new System.Windows.Forms.TextBox();
-            this.btnSearchCusRent = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnSearchCusRent = new System.Windows.Forms.Button();
+            this.txtIDCusRent = new System.Windows.Forms.TextBox();
+            this.dtgvListCusRent = new System.Windows.Forms.DataGridView();
+            this.txtNameCusRent = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListCusRent)).BeginInit();
             this.SuspendLayout();
@@ -110,14 +110,49 @@ namespace QuanLyCaoOc
             this.panel1.Size = new System.Drawing.Size(887, 503);
             this.panel1.TabIndex = 7;
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 84);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Mã Khách Hàng:";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(576, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(131, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Mã hợp đồng thuế phòng:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(713, 9);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 19;
+            // 
+            // btnSearchCusRent
+            // 
+            this.btnSearchCusRent.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchCusRent.Location = new System.Drawing.Point(226, 118);
+            this.btnSearchCusRent.Name = "btnSearchCusRent";
+            this.btnSearchCusRent.Size = new System.Drawing.Size(89, 23);
+            this.btnSearchCusRent.TabIndex = 17;
+            this.btnSearchCusRent.Text = "Tìm kiếm";
+            this.btnSearchCusRent.UseVisualStyleBackColor = true;
+            this.btnSearchCusRent.Click += new System.EventHandler(this.btnSearchCusRent_Click);
+            // 
+            // txtIDCusRent
+            // 
+            this.txtIDCusRent.Location = new System.Drawing.Point(120, 81);
+            this.txtIDCusRent.Name = "txtIDCusRent";
+            this.txtIDCusRent.ReadOnly = true;
+            this.txtIDCusRent.Size = new System.Drawing.Size(100, 20);
+            this.txtIDCusRent.TabIndex = 15;
+            // 
+            // dtgvListCusRent
+            // 
+            this.dtgvListCusRent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvListCusRent.Location = new System.Drawing.Point(3, 231);
+            this.dtgvListCusRent.Name = "dtgvListCusRent";
+            this.dtgvListCusRent.Size = new System.Drawing.Size(878, 269);
+            this.dtgvListCusRent.TabIndex = 14;
             // 
             // txtNameCusRent
             // 
@@ -135,49 +170,14 @@ namespace QuanLyCaoOc
             this.label4.TabIndex = 12;
             this.label4.Text = "Tên khách hàng:";
             // 
-            // dtgvListCusRent
+            // label2
             // 
-            this.dtgvListCusRent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvListCusRent.Location = new System.Drawing.Point(3, 231);
-            this.dtgvListCusRent.Name = "dtgvListCusRent";
-            this.dtgvListCusRent.Size = new System.Drawing.Size(878, 269);
-            this.dtgvListCusRent.TabIndex = 14;
-            // 
-            // txtIDCusRent
-            // 
-            this.txtIDCusRent.Location = new System.Drawing.Point(120, 81);
-            this.txtIDCusRent.Name = "txtIDCusRent";
-            this.txtIDCusRent.ReadOnly = true;
-            this.txtIDCusRent.Size = new System.Drawing.Size(100, 20);
-            this.txtIDCusRent.TabIndex = 15;
-            // 
-            // btnSearchCusRent
-            // 
-            this.btnSearchCusRent.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchCusRent.Location = new System.Drawing.Point(226, 118);
-            this.btnSearchCusRent.Name = "btnSearchCusRent";
-            this.btnSearchCusRent.Size = new System.Drawing.Size(89, 23);
-            this.btnSearchCusRent.TabIndex = 17;
-            this.btnSearchCusRent.Text = "Tìm kiếm";
-            this.btnSearchCusRent.UseVisualStyleBackColor = true;
-            this.btnSearchCusRent.Click += new System.EventHandler(this.btnSearchCusRent_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(629, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 13);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Mã phòng muốn thuê:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(746, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 19;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 84);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Mã Khách Hàng:";
             // 
             // frmRent
             // 
