@@ -14,6 +14,12 @@ namespace QuanLyCaoOc
 {
     public partial class frmMain : Form
     {
+        public delegate void del_Room(int id);
+        public del_Room GetIdRoom;
+        public frmMain()
+        {
+            InitializeComponent();
+        }
         public frmMain(AccountDTO acc)
         {
             InitializeComponent();
@@ -31,20 +37,21 @@ namespace QuanLyCaoOc
             List<RoomDTO> RoomList = RoomDAO.Instance.LoadRoomList();
             foreach (RoomDTO item in RoomList)
             {
-                if (item.Floor == floor)
+                if (item.Tang == floor)
                 {
 
                     Button btn = new Button() { Width = RoomDAO.width, Height = RoomDAO.height };
-                    btn.Text = item.ID + "\n" + item.Stt;
+                    btn.Text = item.MaPhong + "\n" + item.TinhTrang;
                     btn.Click += Btn_Click;
                     btn.Tag = item;
-                    switch (item.Stt)
+                    switch (item.TinhTrang)
                     {
                         case "Trống":
                             btn.BackColor = Color.Green;
                             break;
                         default:
                             btn.BackColor = Color.Red;
+                            btn.Click -= Btn_Click;
                             break;
                     }
                     flpRoom.Controls.Add(btn);
@@ -66,14 +73,13 @@ namespace QuanLyCaoOc
         }
         private void Btn_Click(object sender, EventArgs e)
         {
-            int RoomID=((sender as Button).Tag as RoomDTO).ID;
+            int RoomID=((sender as Button).Tag as RoomDTO).MaPhong;
             txtIDRoom.Text = RoomID.ToString();
-            txtAera.Text = ((sender as Button).Tag as RoomDTO).Area.ToString();
-            txtNOW.Text = ((sender as Button).Tag as RoomDTO).Now.ToString();
+            txtAera.Text = ((sender as Button).Tag as RoomDTO).DTSuDung.ToString();
+            txtNOW.Text = ((sender as Button).Tag as RoomDTO).SoChoLamViec.ToString();
             txtAddress.Text= RoomDAO.Instance.GetAddressBuildingByRoomID(RoomID);
 
         }
-
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -90,6 +96,23 @@ namespace QuanLyCaoOc
             frmAdmin f = new frmAdmin();
             f.LoginAccount = LoginAcc;
             f.ShowDialog();
+        }
+        public int GetCurrentRoomID()
+        {
+            int id = 0;
+            if (int.TryParse(txtIDRoom.Text, out id))
+                return id;
+            else
+                return -1;
+        }
+        private void btnBookRoom_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmRent f = new frmRent();
+            GetIdRoom += new del_Room(f.LoadRoomByID);
+            GetIdRoom(GetCurrentRoomID());
+            f.ShowDialog();
+            this.Show();
         }
     }
 }

@@ -206,9 +206,7 @@ namespace QuanLyCaoOc
                 MessageBox.Show("Vui lòng chọn người dùng cần xóa", "thông báo");
                 return;
             }
-            if (LoginAccount.TenDangNhap.Equals(
-                
-                ))
+            if (LoginAccount.TenDangNhap.Equals(username))
             {
                 MessageBox.Show("Không thể tự hủy bản thân mình được!!!", "Thông báo");
                 return;
@@ -276,5 +274,7 @@ namespace QuanLyCaoOc
         {
             AccountBinding.DataSource = SearchAccByName(txtSearchUser.Text);
         }
+
+        
     }
 }

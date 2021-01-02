@@ -21,3 +21,4 @@ C:\New folder\PT1\DATH\QuanLyCaoOc\QuanLyCaoOc\QuanLyCaoOc\bin\Debug\DTO.dll.con
 C:\New folder\PT1\DATH\QuanLyCaoOc\QuanLyCaoOc\QuanLyCaoOc\obj\Debug\QuanLyCaoOc.csproj.CopyComplete
 C:\New folder\PT1\DATH\QuanLyCaoOc\QuanLyCaoOc\QuanLyCaoOc\obj\Debug\QuanLyCaoOc.frmProfile.resources
 C:\New folder\PT1\DATH\QuanLyCaoOc\QuanLyCaoOc\QuanLyCaoOc\obj\Debug\QuanLyCaoOc.frmAdmin.resources
+C:\New folder\PT1\DATH\QuanLyCaoOc\QuanLyCaoOc\QuanLyCaoOc\obj\Debug\QuanLyCaoOc.frmRent.resources
