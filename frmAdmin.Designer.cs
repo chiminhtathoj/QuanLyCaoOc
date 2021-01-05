@@ -208,6 +208,7 @@ namespace QuanLyCaoOc
             this.dtpDOBCus.Name = "dtpDOBCus";
             this.dtpDOBCus.Size = new System.Drawing.Size(174, 20);
             this.dtpDOBCus.TabIndex = 4;
+            this.dtpDOBCus.Value = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             // 
             // txtIDCUS
             // 

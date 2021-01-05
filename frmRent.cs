@@ -15,6 +15,7 @@ namespace QuanLyCaoOc
     public partial class frmRent : Form
     {
         BindingSource CustomerBinding = new BindingSource();
+        List<RoomDTO> listRoom = new List<RoomDTO>();
         public frmRent()
         {
             InitializeComponent();
@@ -24,20 +25,24 @@ namespace QuanLyCaoOc
             frmMain f = new frmMain();
         }
         
-        public void LoadRoomByID(int id)
+        public List<RoomDTO> LoadRoomListRoom(List<RoomDTO> list)
         {
-           DataTable data = RoomDAO.Instance.GetRoomByRoomid(id);
-            foreach (DataRow item in data.Rows)
+            float TotalPrice = 0;
+            foreach (RoomDTO item in list)
             {
-                RoomDTO room = new RoomDTO(item);
-                txtIDRent.Text = room.MaPhong.ToString();
-                float Price = room.GiaCoBan + room.SoChoLamViec * 200000 + room.Tang * 500000;
-                txtPriceRent.Text = Price.ToString("c");
-            } 
-           
+                TotalPrice += (item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000);
+                txtIDRent.Text += item.MaPhong +",";
+            }
+            txtPriceRent.Text = TotalPrice.ToString("c");
+            listRoom = list;
+            return list;
         }
         void LoadListCustomer()
         {
+            dtpFirstPay.Format = DateTimePickerFormat.Custom;
+            dtpFirstPay.CustomFormat = "dd/MM/yyyy";//sửa định dạng 
+            dtpValidityConTract.Format = DateTimePickerFormat.Custom;
+            dtpValidityConTract.CustomFormat = "dd/MM/yyyy";//sửa định dạng 
             CustomerBinding.DataSource = CustomerDAO.Instance.GetListCustomer(); // dùng custombiding để khi load lại không bị lỗi
             dtgvListCusRent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dtgvListCusRent.Columns[dtgvListCusRent.ColumnCount - 4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;// cho dtgv vừa khung hình 
@@ -72,6 +77,11 @@ namespace QuanLyCaoOc
         private void btnSearchCusRent_Click(object sender, EventArgs e)
         {
             CustomerBinding.DataSource = SearchCusByName(txtNameCusRent.Text);
+        }
+
+        private void btnBookRoom_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

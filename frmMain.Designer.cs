@@ -32,8 +32,21 @@ namespace QuanLyCaoOc
             this.flpRoom = new System.Windows.Forms.FlowLayoutPanel();
             this.cbbFloor = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtTotalPrice = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lvRoom = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnBookRoom = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDeleteOneLV = new System.Windows.Forms.Button();
+            this.btnResetLV = new System.Windows.Forms.Button();
+            this.btnAddListRoomRent = new System.Windows.Forms.Button();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNOW = new System.Windows.Forms.TextBox();
@@ -44,20 +57,14 @@ namespace QuanLyCaoOc
             this.txtIDRoom = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TaiKhoanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.giớiThiệuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lvRoom = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnAddListRoomRent = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -95,7 +102,7 @@ namespace QuanLyCaoOc
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lvRoom);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(807, 35);
@@ -103,10 +110,105 @@ namespace QuanLyCaoOc
             this.panel1.Size = new System.Drawing.Size(457, 611);
             this.panel1.TabIndex = 3;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtTotalPrice);
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.lvRoom);
+            this.panel3.Controls.Add(this.btnBookRoom);
+            this.panel3.Location = new System.Drawing.Point(4, 230);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(450, 378);
+            this.panel3.TabIndex = 2;
+            // 
+            // txtTotalPrice
+            // 
+            this.txtTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalPrice.ForeColor = System.Drawing.Color.Red;
+            this.txtTotalPrice.Location = new System.Drawing.Point(97, 294);
+            this.txtTotalPrice.Name = "txtTotalPrice";
+            this.txtTotalPrice.ReadOnly = true;
+            this.txtTotalPrice.Size = new System.Drawing.Size(139, 22);
+            this.txtTotalPrice.TabIndex = 12;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(8, 295);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 16);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Tổng Tiền:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(115, 7);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(240, 20);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Danh sách phòng muốn thuê";
+            // 
+            // lvRoom
+            // 
+            this.lvRoom.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.lvRoom.FullRowSelect = true;
+            this.lvRoom.GridLines = true;
+            this.lvRoom.HideSelection = false;
+            this.lvRoom.Location = new System.Drawing.Point(6, 30);
+            this.lvRoom.Name = "lvRoom";
+            this.lvRoom.Size = new System.Drawing.Size(444, 247);
+            this.lvRoom.TabIndex = 2;
+            this.lvRoom.UseCompatibleStateImageBehavior = false;
+            this.lvRoom.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Mã Phòng";
+            this.columnHeader1.Width = 74;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Tầng";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Diện tích sử dụng";
+            this.columnHeader3.Width = 123;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "số chỗ làm việc";
+            this.columnHeader4.Width = 94;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Giá tiền";
+            this.columnHeader5.Width = 85;
+            // 
+            // btnBookRoom
+            // 
+            this.btnBookRoom.Location = new System.Drawing.Point(349, 283);
+            this.btnBookRoom.Name = "btnBookRoom";
+            this.btnBookRoom.Size = new System.Drawing.Size(98, 40);
+            this.btnBookRoom.TabIndex = 10;
+            this.btnBookRoom.Text = "Đặt Phòng";
+            this.btnBookRoom.UseVisualStyleBackColor = true;
+            this.btnBookRoom.Click += new System.EventHandler(this.btnBookRoom_Click);
+            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnDeleteOneLV);
+            this.panel2.Controls.Add(this.btnResetLV);
             this.panel2.Controls.Add(this.btnAddListRoomRent);
-            this.panel2.Controls.Add(this.btnBookRoom);
             this.panel2.Controls.Add(this.txtAddress);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtNOW);
@@ -122,20 +224,41 @@ namespace QuanLyCaoOc
             this.panel2.Size = new System.Drawing.Size(450, 202);
             this.panel2.TabIndex = 1;
             // 
-            // btnBookRoom
+            // btnDeleteOneLV
             // 
-            this.btnBookRoom.Location = new System.Drawing.Point(232, 159);
-            this.btnBookRoom.Name = "btnBookRoom";
-            this.btnBookRoom.Size = new System.Drawing.Size(98, 40);
-            this.btnBookRoom.TabIndex = 10;
-            this.btnBookRoom.Text = "Đặt Phòng";
-            this.btnBookRoom.UseVisualStyleBackColor = true;
-            this.btnBookRoom.Click += new System.EventHandler(this.btnBookRoom_Click);
+            this.btnDeleteOneLV.Location = new System.Drawing.Point(216, 159);
+            this.btnDeleteOneLV.Name = "btnDeleteOneLV";
+            this.btnDeleteOneLV.Size = new System.Drawing.Size(106, 40);
+            this.btnDeleteOneLV.TabIndex = 13;
+            this.btnDeleteOneLV.Text = "Xóa phòng đả chọn";
+            this.btnDeleteOneLV.UseVisualStyleBackColor = true;
+            this.btnDeleteOneLV.Click += new System.EventHandler(this.btnDeleteOneLV_Click);
+            // 
+            // btnResetLV
+            // 
+            this.btnResetLV.Location = new System.Drawing.Point(328, 159);
+            this.btnResetLV.Name = "btnResetLV";
+            this.btnResetLV.Size = new System.Drawing.Size(119, 40);
+            this.btnResetLV.TabIndex = 12;
+            this.btnResetLV.Text = "Xóa danh sách phòng muốn thuê";
+            this.btnResetLV.UseVisualStyleBackColor = true;
+            this.btnResetLV.Click += new System.EventHandler(this.btnResetLV_Click);
+            // 
+            // btnAddListRoomRent
+            // 
+            this.btnAddListRoomRent.Location = new System.Drawing.Point(100, 159);
+            this.btnAddListRoomRent.Name = "btnAddListRoomRent";
+            this.btnAddListRoomRent.Size = new System.Drawing.Size(106, 40);
+            this.btnAddListRoomRent.TabIndex = 11;
+            this.btnAddListRoomRent.Text = "Thêm vào danh sách muốn thuê";
+            this.btnAddListRoomRent.UseVisualStyleBackColor = true;
+            this.btnAddListRoomRent.Click += new System.EventHandler(this.btnAddListRoomRent_Click);
             // 
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(100, 133);
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ReadOnly = true;
             this.txtAddress.Size = new System.Drawing.Size(347, 20);
             this.txtAddress.TabIndex = 9;
             // 
@@ -152,6 +275,7 @@ namespace QuanLyCaoOc
             // 
             this.txtNOW.Location = new System.Drawing.Point(100, 97);
             this.txtNOW.Name = "txtNOW";
+            this.txtNOW.ReadOnly = true;
             this.txtNOW.Size = new System.Drawing.Size(30, 20);
             this.txtNOW.TabIndex = 7;
             // 
@@ -168,6 +292,7 @@ namespace QuanLyCaoOc
             // 
             this.txtAera.Location = new System.Drawing.Point(100, 65);
             this.txtAera.Name = "txtAera";
+            this.txtAera.ReadOnly = true;
             this.txtAera.Size = new System.Drawing.Size(30, 20);
             this.txtAera.TabIndex = 5;
             // 
@@ -193,6 +318,7 @@ namespace QuanLyCaoOc
             // 
             this.txtIDRoom.Location = new System.Drawing.Point(100, 6);
             this.txtIDRoom.Name = "txtIDRoom";
+            this.txtIDRoom.ReadOnly = true;
             this.txtIDRoom.Size = new System.Drawing.Size(30, 20);
             this.txtIDRoom.TabIndex = 1;
             // 
@@ -208,24 +334,12 @@ namespace QuanLyCaoOc
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(182, 2);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 20);
+            this.label2.Size = new System.Drawing.Size(144, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Thông Tin Phòng";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.adminToolStripMenuItem,
-            this.TaiKhoanToolStripMenuItem,
-            this.giớiThiệuToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1276, 24);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // adminToolStripMenuItem
             // 
@@ -263,56 +377,17 @@ namespace QuanLyCaoOc
             this.giớiThiệuToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.giớiThiệuToolStripMenuItem.Text = "Giới thiệu";
             // 
-            // lvRoom
+            // menuStrip1
             // 
-            this.lvRoom.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-            this.lvRoom.GridLines = true;
-            this.lvRoom.HideSelection = false;
-            this.lvRoom.Location = new System.Drawing.Point(10, 230);
-            this.lvRoom.Name = "lvRoom";
-            this.lvRoom.Size = new System.Drawing.Size(444, 247);
-            this.lvRoom.TabIndex = 2;
-            this.lvRoom.UseCompatibleStateImageBehavior = false;
-            this.lvRoom.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Mã Phòng";
-            this.columnHeader1.Width = 74;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Tầng";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Diện tích sử dụng";
-            this.columnHeader3.Width = 123;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "số chỗ làm việc";
-            this.columnHeader4.Width = 94;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Giá tiền";
-            this.columnHeader5.Width = 85;
-            // 
-            // btnAddListRoomRent
-            // 
-            this.btnAddListRoomRent.Location = new System.Drawing.Point(336, 159);
-            this.btnAddListRoomRent.Name = "btnAddListRoomRent";
-            this.btnAddListRoomRent.Size = new System.Drawing.Size(95, 40);
-            this.btnAddListRoomRent.TabIndex = 11;
-            this.btnAddListRoomRent.Text = "Thêm vào danh sách thuê";
-            this.btnAddListRoomRent.UseVisualStyleBackColor = true;
-            this.btnAddListRoomRent.Click += new System.EventHandler(this.btnAddListRoomRent_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.adminToolStripMenuItem,
+            this.TaiKhoanToolStripMenuItem,
+            this.giớiThiệuToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1276, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // frmMain
             // 
@@ -328,6 +403,8 @@ namespace QuanLyCaoOc
             this.Text = " ";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -352,14 +429,7 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtIDRoom;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnBookRoom;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem TaiKhoanToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem thôngTinCáNhânToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem giớiThiệuToolStripMenuItem;
         private System.Windows.Forms.ListView lvRoom;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -367,5 +437,18 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button btnAddListRoomRent;
+        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TaiKhoanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thôngTinCáNhânToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem giớiThiệuToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnResetLV;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnDeleteOneLV;
+        private System.Windows.Forms.TextBox txtTotalPrice;
+        private System.Windows.Forms.Label label8;
     }
 }
