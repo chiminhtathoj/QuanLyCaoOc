@@ -16,16 +16,20 @@ namespace QuanLyCaoOc
     {
         BindingSource CustomerBinding = new BindingSource();
         BindingSource AccountBinding = new BindingSource();
+        BindingSource BillBinding = new BindingSource();
         public AccountDTO LoginAccount;
         public frmAdmin()
         {
             InitializeComponent();
             dtgvCustomer.DataSource = CustomerBinding;
             dtgvAccount.DataSource = AccountBinding;
+            dtgvBill.DataSource = BillBinding;
             LoadListCustomer();
-            LoadListAccount();
             AddCustomerBinding();
+            LoadListAccount();
             AddAccountBinding();
+            LoadListBill();
+            AddBillBinding();
         }
 
         void LoadListCustomer()
@@ -57,8 +61,8 @@ namespace QuanLyCaoOc
         void LoadListAccount()
         {
             AccountBinding.DataSource = AccountDAO.Instance.GetListAccount();
-            dtgvAccount.Columns[0].HeaderText = "Tên đăng nhập";
-            dtgvAccount.Columns[1].HeaderText = "Quyền hạn";
+            dtgvAccount.Columns[0].HeaderText = "Tên đăng nhập";
+            dtgvAccount.Columns[1].HeaderText = "Quyền hạn";
             foreach (DataGridViewColumn col in dtgvAccount.Columns)
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //căn lề giữ cho tiêu đề
@@ -70,6 +74,27 @@ namespace QuanLyCaoOc
             cbbUserType.DataBindings.Add(new Binding("text", dtgvAccount.DataSource, "Loai", true, DataSourceUpdateMode.Never));
 
         }
+        void LoadListBill()
+        {
+            BillBinding.DataSource = BillDAO.Instance.GetListBill();
+            dtgvBill.Columns[0].HeaderText = "Mã hóa đơn";
+            dtgvBill.Columns[1].HeaderText = "Ngày thanh toán";
+            dtgvBill.Columns[2].HeaderText = "Lý do thanh toán";
+            dtgvBill.Columns[3].HeaderText = "Tổng tiền thanh toán";
+            foreach (DataGridViewColumn col in dtgvBill.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //căn lề giữ cho tiêu đề
+            }
+        }
+        void AddBillBinding()
+        {
+            txtIDBill.DataBindings.Add(new Binding("text", dtgvBill.DataSource, "MaHoaDon", true, DataSourceUpdateMode.Never));
+            txtIDCusBill.DataBindings.Add(new Binding("text", dtgvBill.DataSource, "MaKH", true, DataSourceUpdateMode.Never));
+            txtPaymentReason.DataBindings.Add(new Binding("text", dtgvBill.DataSource, "LyDoTT", true, DataSourceUpdateMode.Never));
+            txtTotalPayment.DataBindings.Add(new Binding("text", dtgvBill.DataSource, "TongTienThanhToan", true, DataSourceUpdateMode.Never));
+            //cbbUserType.DataBindings.Add(new Binding("text", dtgvBill.DataSource, "Loai", true, DataSourceUpdateMode.Never));
+        }
+        
         private void BtnLoadCus_Click(object sender, EventArgs e)
         {
             LoadListCustomer();
@@ -263,7 +288,6 @@ namespace QuanLyCaoOc
         private void btnSearchCus_Click(object sender, EventArgs e)
         {
            CustomerBinding.DataSource= SearchCusByName(txtSearchCus.Text);
-           
         }
 
         DataTable SearchAccByName(string name)
@@ -275,6 +299,21 @@ namespace QuanLyCaoOc
             AccountBinding.DataSource = SearchAccByName(txtSearchUser.Text);
         }
 
-        
+        private void btnLoadListBill_Click(object sender, EventArgs e)
+        {
+            LoadListBill();
+        }
+
+        private void btnSearchBill_Click(object sender, EventArgs e)
+        {
+            BillBinding.DataSource = SearchBillByID(int.Parse(txtSearchBill.Text.ToString()));
+        }
+
+        List<BillDTO> SearchBillByID(int id)
+        {
+            List<BillDTO> listCus = BillDAO.Instance.SearchBillByIDBill(id);
+            return listCus;
+        }
+       
     }
 }

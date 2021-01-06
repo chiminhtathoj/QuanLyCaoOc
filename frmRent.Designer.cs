@@ -32,24 +32,30 @@ namespace QuanLyCaoOc
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIDRent = new System.Windows.Forms.TextBox();
-            this.txtPriceRent = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnSearchCusRent = new System.Windows.Forms.Button();
+            this.txtPriceRent = new System.Windows.Forms.TextBox();
+            this.txtMoney = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.nudRentalPeriod = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnBookRoom = new System.Windows.Forms.Button();
+            this.dtpFirstPay = new System.Windows.Forms.DateTimePicker();
+            this.dtpValidityConTract = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtIDCusRent = new System.Windows.Forms.TextBox();
-            this.dtgvListCusRent = new System.Windows.Forms.DataGridView();
             this.txtNameCusRent = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dtpValidityConTract = new System.Windows.Forms.DateTimePicker();
-            this.dtpFirstPay = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtIDContractRent = new System.Windows.Forms.TextBox();
+            this.btnSearchCusRent = new System.Windows.Forms.Button();
+            this.dtgvListCusRent = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnBookRoom = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRentalPeriod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListCusRent)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,14 +85,6 @@ namespace QuanLyCaoOc
             this.txtIDRent.Size = new System.Drawing.Size(100, 20);
             this.txtIDRent.TabIndex = 5;
             // 
-            // txtPriceRent
-            // 
-            this.txtPriceRent.Location = new System.Drawing.Point(145, 44);
-            this.txtPriceRent.Name = "txtPriceRent";
-            this.txtPriceRent.ReadOnly = true;
-            this.txtPriceRent.Size = new System.Drawing.Size(100, 20);
-            this.txtPriceRent.TabIndex = 6;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -99,6 +97,12 @@ namespace QuanLyCaoOc
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtPriceRent);
+            this.panel1.Controls.Add(this.txtMoney);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.nudRentalPeriod);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.btnBookRoom);
             this.panel1.Controls.Add(this.dtpFirstPay);
             this.panel1.Controls.Add(this.dtpValidityConTract);
@@ -109,11 +113,10 @@ namespace QuanLyCaoOc
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtPriceRent);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtIDRent);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtIDContractRent);
             this.panel1.Controls.Add(this.btnSearchCusRent);
             this.panel1.Controls.Add(this.dtgvListCusRent);
             this.panel1.Location = new System.Drawing.Point(12, 36);
@@ -121,33 +124,119 @@ namespace QuanLyCaoOc
             this.panel1.Size = new System.Drawing.Size(887, 503);
             this.panel1.TabIndex = 7;
             // 
-            // label5
+            // txtPriceRent
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(576, 12);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(131, 13);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Mã hợp đồng thuế phòng:";
+            this.txtPriceRent.Location = new System.Drawing.Point(145, 44);
+            this.txtPriceRent.Name = "txtPriceRent";
+            this.txtPriceRent.ReadOnly = true;
+            this.txtPriceRent.Size = new System.Drawing.Size(100, 20);
+            this.txtPriceRent.TabIndex = 31;
             // 
-            // textBox1
+            // txtMoney
             // 
-            this.textBox1.Location = new System.Drawing.Point(713, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 19;
+            this.txtMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMoney.Location = new System.Drawing.Point(400, 191);
+            this.txtMoney.Name = "txtMoney";
+            this.txtMoney.ReadOnly = true;
+            this.txtMoney.Size = new System.Drawing.Size(191, 26);
+            this.txtMoney.TabIndex = 30;
             // 
-            // btnSearchCusRent
+            // label11
             // 
-            this.btnSearchCusRent.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchCusRent.Location = new System.Drawing.Point(261, 113);
-            this.btnSearchCusRent.Name = "btnSearchCusRent";
-            this.btnSearchCusRent.Size = new System.Drawing.Size(89, 23);
-            this.btnSearchCusRent.TabIndex = 17;
-            this.btnSearchCusRent.Text = "Tìm kiếm";
-            this.btnSearchCusRent.UseVisualStyleBackColor = true;
-            this.btnSearchCusRent.Click += new System.EventHandler(this.btnSearchCusRent_Click);
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(295, 194);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 20);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "Thành tiền:";
+            // 
+            // nudRentalPeriod
+            // 
+            this.nudRentalPeriod.Location = new System.Drawing.Point(713, 111);
+            this.nudRentalPeriod.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudRentalPeriod.Minimum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.nudRentalPeriod.Name = "nudRentalPeriod";
+            this.nudRentalPeriod.Size = new System.Drawing.Size(56, 20);
+            this.nudRentalPeriod.TabIndex = 28;
+            this.nudRentalPeriod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudRentalPeriod.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.nudRentalPeriod.ValueChanged += new System.EventHandler(this.nudRentalPeriod_ValueChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(775, 117);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Tháng";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(600, 113);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(107, 13);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Thời gian muốn thuê:";
+            // 
+            // btnBookRoom
+            // 
+            this.btnBookRoom.Location = new System.Drawing.Point(783, 185);
+            this.btnBookRoom.Name = "btnBookRoom";
+            this.btnBookRoom.Size = new System.Drawing.Size(98, 40);
+            this.btnBookRoom.TabIndex = 24;
+            this.btnBookRoom.Text = "Lập hợp đồng";
+            this.btnBookRoom.UseVisualStyleBackColor = true;
+            this.btnBookRoom.Click += new System.EventHandler(this.btnBookRoom_Click);
+            // 
+            // dtpFirstPay
+            // 
+            this.dtpFirstPay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFirstPay.Location = new System.Drawing.Point(713, 77);
+            this.dtpFirstPay.Name = "dtpFirstPay";
+            this.dtpFirstPay.Size = new System.Drawing.Size(100, 20);
+            this.dtpFirstPay.TabIndex = 23;
+            // 
+            // dtpValidityConTract
+            // 
+            this.dtpValidityConTract.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpValidityConTract.Location = new System.Drawing.Point(713, 41);
+            this.dtpValidityConTract.Name = "dtpValidityConTract";
+            this.dtpValidityConTract.Size = new System.Drawing.Size(100, 20);
+            this.dtpValidityConTract.TabIndex = 22;
+            this.dtpValidityConTract.Value = new System.DateTime(2021, 1, 6, 1, 1, 48, 0);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(576, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(131, 13);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Ngày thanh toán đầu tiên:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(583, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(124, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Ngày hiệu lực hợp đồng:";
             // 
             // txtIDCusRent
             // 
@@ -156,14 +245,6 @@ namespace QuanLyCaoOc
             this.txtIDCusRent.ReadOnly = true;
             this.txtIDCusRent.Size = new System.Drawing.Size(100, 20);
             this.txtIDCusRent.TabIndex = 15;
-            // 
-            // dtgvListCusRent
-            // 
-            this.dtgvListCusRent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvListCusRent.Location = new System.Drawing.Point(3, 231);
-            this.dtgvListCusRent.Name = "dtgvListCusRent";
-            this.dtgvListCusRent.Size = new System.Drawing.Size(878, 269);
-            this.dtgvListCusRent.TabIndex = 14;
             // 
             // txtNameCusRent
             // 
@@ -190,50 +271,41 @@ namespace QuanLyCaoOc
             this.label2.TabIndex = 7;
             this.label2.Text = "Mã Khách Hàng:";
             // 
-            // label6
+            // label5
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(583, 44);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(124, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Ngày hiệu lực hợp đồng:";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(576, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(131, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Mã hợp đồng thuê phòng:";
             // 
-            // label7
+            // txtIDContractRent
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(576, 81);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 13);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "Ngày thanh toán đầu tiên:";
+            this.txtIDContractRent.Location = new System.Drawing.Point(713, 9);
+            this.txtIDContractRent.Name = "txtIDContractRent";
+            this.txtIDContractRent.ReadOnly = true;
+            this.txtIDContractRent.Size = new System.Drawing.Size(100, 20);
+            this.txtIDContractRent.TabIndex = 19;
             // 
-            // dtpValidityConTract
+            // btnSearchCusRent
             // 
-            this.dtpValidityConTract.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpValidityConTract.Location = new System.Drawing.Point(713, 41);
-            this.dtpValidityConTract.Name = "dtpValidityConTract";
-            this.dtpValidityConTract.Size = new System.Drawing.Size(100, 20);
-            this.dtpValidityConTract.TabIndex = 22;
-            this.dtpValidityConTract.Value = new System.DateTime(2021, 1, 6, 1, 1, 48, 0);
+            this.btnSearchCusRent.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchCusRent.Location = new System.Drawing.Point(261, 113);
+            this.btnSearchCusRent.Name = "btnSearchCusRent";
+            this.btnSearchCusRent.Size = new System.Drawing.Size(89, 23);
+            this.btnSearchCusRent.TabIndex = 17;
+            this.btnSearchCusRent.Text = "Tìm kiếm";
+            this.btnSearchCusRent.UseVisualStyleBackColor = true;
+            this.btnSearchCusRent.Click += new System.EventHandler(this.btnSearchCusRent_Click);
             // 
-            // dtpFirstPay
+            // dtgvListCusRent
             // 
-            this.dtpFirstPay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFirstPay.Location = new System.Drawing.Point(713, 77);
-            this.dtpFirstPay.Name = "dtpFirstPay";
-            this.dtpFirstPay.Size = new System.Drawing.Size(100, 20);
-            this.dtpFirstPay.TabIndex = 23;
-            // 
-            // btnBookRoom
-            // 
-            this.btnBookRoom.Location = new System.Drawing.Point(783, 185);
-            this.btnBookRoom.Name = "btnBookRoom";
-            this.btnBookRoom.Size = new System.Drawing.Size(98, 40);
-            this.btnBookRoom.TabIndex = 24;
-            this.btnBookRoom.Text = "Tạo hợp đồng";
-            this.btnBookRoom.UseVisualStyleBackColor = true;
-            this.btnBookRoom.Click += new System.EventHandler(this.btnBookRoom_Click);
+            this.dtgvListCusRent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvListCusRent.Location = new System.Drawing.Point(3, 231);
+            this.dtgvListCusRent.Name = "dtgvListCusRent";
+            this.dtgvListCusRent.Size = new System.Drawing.Size(878, 269);
+            this.dtgvListCusRent.TabIndex = 14;
             // 
             // frmRent
             // 
@@ -248,6 +320,7 @@ namespace QuanLyCaoOc
             this.Text = "frmRent";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRentalPeriod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListCusRent)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -258,7 +331,6 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtIDRent;
-        private System.Windows.Forms.TextBox txtPriceRent;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
@@ -268,12 +340,18 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.TextBox txtIDCusRent;
         private System.Windows.Forms.Button btnSearchCusRent;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtIDContractRent;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpFirstPay;
         private System.Windows.Forms.DateTimePicker dtpValidityConTract;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnBookRoom;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown nudRentalPeriod;
+        private System.Windows.Forms.TextBox txtMoney;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtPriceRent;
     }
 }

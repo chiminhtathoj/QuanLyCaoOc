@@ -30,7 +30,7 @@ namespace QuanLyCaoOc
             InitializeComponent();
             this.LoginAcc = acc;
             cbbFloor.SelectedItem = "1";
-            //ChangeAccount(acc.Loai);
+            ChangeAccount(acc.Loai);
         }
         private AccountDTO LoginAcc;
 
@@ -38,8 +38,8 @@ namespace QuanLyCaoOc
 
         void LoadRoom(int floor)
         {
-            CultureInfo culture = new CultureInfo("vi-VN"); //Chuyển culture về VN
-            Thread.CurrentThread.CurrentCulture = culture; // chỉ dùng trong thread này
+            /*CultureInfo culture = new CultureInfo("vi-VN"); *///Chuyển culture về VN
+            //Thread.CurrentThread.CurrentCulture = culture; // chỉ dùng trong thread này,xài cái này sẻ lỗi format kiểu dữ liệu datetime
             flpRoom.Controls.Clear();
             List<RoomDTO> RoomList = RoomDAO.Instance.LoadRoomList();
             foreach (RoomDTO item in RoomList)
@@ -69,38 +69,39 @@ namespace QuanLyCaoOc
         List<RoomDTO> ShowListRoomRent(string id)
         {
             List<RoomDTO> listRoom = new List<RoomDTO>();
-            DataTable data = RoomDAO.Instance.GetRoomByRoomid(int.Parse(id));
-            
+            try
+            {
+                DataTable data = RoomDAO.Instance.GetRoomByRoomid(int.Parse(id));
+                foreach (DataRow item in data.Rows)
+                {
+                    RoomDTO room = new RoomDTO(item);
+                    listRoom.Add(room);
 
-            foreach (DataRow item in data.Rows)
-            {
-                RoomDTO room = new RoomDTO(item);
-                listRoom.Add(room);
-                
-            }
-            
-            foreach (RoomDTO item in listRoom)
-            {
-                bool found = false;
-                foreach (ListViewItem item1 in lvRoom.Items) // nếu phòng đả có trong danh sách thì cho người dùng nhập lại
+                }
+
+                foreach (RoomDTO item in listRoom)
                 {
-                    if (item1.Text == item.MaPhong.ToString())
+                    CultureInfo culture = new CultureInfo("vi-VN");
+                    bool found = false;
+                    foreach (ListViewItem item1 in lvRoom.Items) // nếu phòng đả có trong danh sách thì cho người dùng nhập lại
                     {
-                        found = true;
-                        MessageBox.Show("Phòng đả có trong danh sách thuê,vùi lòng chọn phòng khác!");
-                        break;
+                        if (item1.Text == item.MaPhong.ToString())
+                        {
+                            found = true;
+                            MessageBox.Show("Phòng đả có trong danh sách thuê,vùi lòng chọn phòng khác!");
+                            break;
+                        }
                     }
-                }
-                if (!found)
-                {
-                    ListViewItem lvItem = new ListViewItem(item.MaPhong.ToString());
-                    float Price = item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000;
-                    lvItem.SubItems.Add(item.Tang.ToString());
-                    lvItem.SubItems.Add(item.DTSuDung.ToString());
-                    lvItem.SubItems.Add(item.SoChoLamViec.ToString());
-                    lvItem.SubItems.Add(Price.ToString("c"));
-                    lvRoom.Items.Add(lvItem);
-                }
+                    if (!found)
+                    {
+                        ListViewItem lvItem = new ListViewItem(item.MaPhong.ToString());
+                        float Price = item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000;
+                        lvItem.SubItems.Add(item.Tang.ToString());
+                        lvItem.SubItems.Add(item.DTSuDung.ToString());
+                        lvItem.SubItems.Add(item.SoChoLamViec.ToString());
+                        lvItem.SubItems.Add(Price.ToString("c", culture));
+                        lvRoom.Items.Add(lvItem);
+                    }
                 //ListViewItem lvItem = new ListViewItem(item.MaPhong.ToString()); =>>> không biết sao lỗi 
                 //if (lvRoom.FindItemWithText(item.MaPhong.ToString()) == null)
                 //{
@@ -113,24 +114,32 @@ namespace QuanLyCaoOc
                 //}
                 //else
                 //    MessageBox.Show("Phòng đả có trong danh sách vui lòng chọn phòng khác!");
-              
+
             }
             ListRoomGB.AddRange(listRoom);
-            CalSumMoney();
+                CalSumMoney();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Vui lòng chọn phòng!");
+            }
+
             return listRoom;
+
         }
         void CalSumMoney()
         {
-            float TotalPrice = 0;
+            CultureInfo culture = new CultureInfo("vi-VN");
+            double TotalPrice = 0;
             foreach (RoomDTO item in ListRoomGB)
             {
                 TotalPrice += (item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000);
             }
-            txtTotalPrice.Text = TotalPrice.ToString("c");
+            txtTotalPrice.Text = TotalPrice.ToString("c", culture);
         }
         void ChangeAccount(string type)
         {
-            adminToolStripMenuItem.Enabled = type == "Admin";
+            adminToolStripMenuItem.Visible = type == "Admin";
             TaiKhoanToolStripMenuItem.Text += " (" + LoginAcc1.TenDangNhap + ") ";
         }
         private void cbbFloor_SelectedIndexChanged(object sender, EventArgs e)
@@ -168,12 +177,18 @@ namespace QuanLyCaoOc
         }
         private void btnBookRoom_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmRent f = new frmRent();
-            GetListRoom += new del_ListRoom(f.LoadRoomListRoom);
-            GetListRoom(ListRoomGB);
-            f.ShowDialog();
-            this.Show();
+            if (lvRoom.Items.Count != 0)
+            {
+                this.Hide();
+                frmRent f = new frmRent();
+                GetListRoom += new del_ListRoom(f.LoadRoomListRoom);
+                GetListRoom(ListRoomGB);
+                f.ShowDialog();
+                this.Show();
+                ClearAll();
+            }
+            else
+                MessageBox.Show("Vui lòng chọn phòng muốn thuê trước!");
         }
 
         private void btnAddListRoomRent_Click(object sender, EventArgs e)
@@ -187,7 +202,17 @@ namespace QuanLyCaoOc
             ListRoomGB.Clear();
             CalSumMoney();
         }
-
+        void ClearAll() // Xóa tất cả sau khi lập hợp đồng
+        {
+            lvRoom.Items.Clear();
+            ListRoomGB.Clear();
+            txtIDRoom.Clear();
+            txtAera.Clear();
+            txtNOW.Clear();
+            txtTotalPrice.Clear();
+            txtAddress.Clear();
+            LoadRoom(Convert.ToInt32(cbbFloor.SelectedItem));
+        }
         private void btnDeleteOneLV_Click(object sender, EventArgs e) // xóa phòng đả chọn muốn thuê trong LV
         {
             for (int i = lvRoom.Items.Count - 1; i >= 0; i--)
@@ -198,8 +223,12 @@ namespace QuanLyCaoOc
                     ListRoomGB.RemoveAt(i); // xóa luôn trong listroomGB
                 }
             }
-            MessageBox.Show(ListRoomGB.Count.ToString());
             CalSumMoney();
+        }
+
+        private void adfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -72,6 +72,25 @@ namespace QuanLyCaoOc
             this.txtSearchUser = new System.Windows.Forms.TextBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
+            this.tpBill = new System.Windows.Forms.TabPage();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.txtPaymentReason = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTotalPayment = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtIDBill = new System.Windows.Forms.TextBox();
+            this.txtIDCusBill = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnLoadListBill = new System.Windows.Forms.Button();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.btnSearchBill = new System.Windows.Forms.Button();
+            this.txtSearchBill = new System.Windows.Forms.TextBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.dtgvBill = new System.Windows.Forms.DataGridView();
+            this.tpContractRenewal = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             this.tcAdmin.SuspendLayout();
             this.tpCustomer.SuspendLayout();
@@ -86,6 +105,12 @@ namespace QuanLyCaoOc
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
+            this.tpBill.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -100,6 +125,8 @@ namespace QuanLyCaoOc
             // 
             this.tcAdmin.Controls.Add(this.tpCustomer);
             this.tcAdmin.Controls.Add(this.tpAccount);
+            this.tcAdmin.Controls.Add(this.tpBill);
+            this.tcAdmin.Controls.Add(this.tpContractRenewal);
             this.tcAdmin.Location = new System.Drawing.Point(3, 3);
             this.tcAdmin.Name = "tcAdmin";
             this.tcAdmin.SelectedIndex = 0;
@@ -519,12 +546,196 @@ namespace QuanLyCaoOc
             this.dtgvAccount.Size = new System.Drawing.Size(592, 452);
             this.dtgvAccount.TabIndex = 0;
             // 
+            // tpBill
+            // 
+            this.tpBill.Controls.Add(this.panel10);
+            this.tpBill.Location = new System.Drawing.Point(4, 22);
+            this.tpBill.Name = "tpBill";
+            this.tpBill.Padding = new System.Windows.Forms.Padding(3);
+            this.tpBill.Size = new System.Drawing.Size(933, 470);
+            this.tpBill.TabIndex = 2;
+            this.tpBill.Text = "Hóa Đơn";
+            this.tpBill.UseVisualStyleBackColor = true;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.panel11);
+            this.panel10.Controls.Add(this.btnLoadListBill);
+            this.panel10.Controls.Add(this.panel12);
+            this.panel10.Controls.Add(this.panel13);
+            this.panel10.Location = new System.Drawing.Point(3, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(927, 464);
+            this.panel10.TabIndex = 2;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.txtPaymentReason);
+            this.panel11.Controls.Add(this.label7);
+            this.panel11.Controls.Add(this.txtTotalPayment);
+            this.panel11.Controls.Add(this.label16);
+            this.panel11.Controls.Add(this.txtIDBill);
+            this.panel11.Controls.Add(this.txtIDCusBill);
+            this.panel11.Controls.Add(this.label13);
+            this.panel11.Controls.Add(this.label14);
+            this.panel11.Controls.Add(this.label15);
+            this.panel11.Location = new System.Drawing.Point(607, 42);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(320, 370);
+            this.panel11.TabIndex = 10;
+            // 
+            // txtPaymentReason
+            // 
+            this.txtPaymentReason.Location = new System.Drawing.Point(150, 180);
+            this.txtPaymentReason.Name = "txtPaymentReason";
+            this.txtPaymentReason.ReadOnly = true;
+            this.txtPaymentReason.Size = new System.Drawing.Size(164, 20);
+            this.txtPaymentReason.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(11, 179);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(144, 19);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Lý do thanh toán:";
+            // 
+            // txtTotalPayment
+            // 
+            this.txtTotalPayment.Location = new System.Drawing.Point(150, 256);
+            this.txtTotalPayment.Name = "txtTotalPayment";
+            this.txtTotalPayment.ReadOnly = true;
+            this.txtTotalPayment.Size = new System.Drawing.Size(164, 20);
+            this.txtTotalPayment.TabIndex = 11;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(11, 257);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(87, 19);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Tổng tiền:";
+            // 
+            // txtIDBill
+            // 
+            this.txtIDBill.Location = new System.Drawing.Point(150, 53);
+            this.txtIDBill.Name = "txtIDBill";
+            this.txtIDBill.ReadOnly = true;
+            this.txtIDBill.Size = new System.Drawing.Size(164, 20);
+            this.txtIDBill.TabIndex = 1;
+            // 
+            // txtIDCusBill
+            // 
+            this.txtIDCusBill.Location = new System.Drawing.Point(150, 113);
+            this.txtIDCusBill.Name = "txtIDCusBill";
+            this.txtIDCusBill.ReadOnly = true;
+            this.txtIDCusBill.Size = new System.Drawing.Size(164, 20);
+            this.txtIDCusBill.TabIndex = 2;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(11, 114);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(133, 19);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Mã khách Hàng:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(11, 52);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(105, 19);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Mã hóa đơn:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(25, 2);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(270, 24);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Thông tin chi tiết hóa đơn";
+            // 
+            // btnLoadListBill
+            // 
+            this.btnLoadListBill.Location = new System.Drawing.Point(836, 418);
+            this.btnLoadListBill.Name = "btnLoadListBill";
+            this.btnLoadListBill.Size = new System.Drawing.Size(85, 40);
+            this.btnLoadListBill.TabIndex = 9;
+            this.btnLoadListBill.Text = "Xem";
+            this.btnLoadListBill.UseVisualStyleBackColor = true;
+            this.btnLoadListBill.Click += new System.EventHandler(this.btnLoadListBill_Click);
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.btnSearchBill);
+            this.panel12.Controls.Add(this.txtSearchBill);
+            this.panel12.Location = new System.Drawing.Point(604, 6);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(320, 30);
+            this.panel12.TabIndex = 1;
+            // 
+            // btnSearchBill
+            // 
+            this.btnSearchBill.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchBill.Location = new System.Drawing.Point(222, 2);
+            this.btnSearchBill.Name = "btnSearchBill";
+            this.btnSearchBill.Size = new System.Drawing.Size(89, 23);
+            this.btnSearchBill.TabIndex = 3;
+            this.btnSearchBill.Text = "Tìm kiếm";
+            this.btnSearchBill.UseVisualStyleBackColor = true;
+            this.btnSearchBill.Click += new System.EventHandler(this.btnSearchBill_Click);
+            // 
+            // txtSearchBill
+            // 
+            this.txtSearchBill.Location = new System.Drawing.Point(3, 3);
+            this.txtSearchBill.Name = "txtSearchBill";
+            this.txtSearchBill.Size = new System.Drawing.Size(213, 20);
+            this.txtSearchBill.TabIndex = 0;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.dtgvBill);
+            this.panel13.Location = new System.Drawing.Point(3, 3);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(598, 455);
+            this.panel13.TabIndex = 0;
+            // 
+            // dtgvBill
+            // 
+            this.dtgvBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvBill.Location = new System.Drawing.Point(3, 3);
+            this.dtgvBill.Name = "dtgvBill";
+            this.dtgvBill.Size = new System.Drawing.Size(592, 452);
+            this.dtgvBill.TabIndex = 0;
+            // 
+            // tpContractRenewal
+            // 
+            this.tpContractRenewal.Location = new System.Drawing.Point(4, 22);
+            this.tpContractRenewal.Name = "tpContractRenewal";
+            this.tpContractRenewal.Padding = new System.Windows.Forms.Padding(3);
+            this.tpContractRenewal.Size = new System.Drawing.Size(933, 470);
+            this.tpContractRenewal.TabIndex = 3;
+            this.tpContractRenewal.Text = "Hợp đồng gia hạn";
+            this.tpContractRenewal.UseVisualStyleBackColor = true;
+            // 
             // frmAdmin
             // 
             this.AcceptButton = this.btnSearchCus;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 523);
+            this.ClientSize = new System.Drawing.Size(961, 523);
             this.Controls.Add(this.panel1);
             this.Name = "frmAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -547,6 +758,14 @@ namespace QuanLyCaoOc
             this.panel8.PerformLayout();
             this.panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
+            this.tpBill.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -596,5 +815,24 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.ComboBox cbbUserType;
         private System.Windows.Forms.ComboBox cbbSexCus;
         private System.Windows.Forms.Button btnResetAccPW;
+        private System.Windows.Forms.TabPage tpBill;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button btnLoadListBill;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Button btnSearchBill;
+        private System.Windows.Forms.TextBox txtSearchBill;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.DataGridView dtgvBill;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.TextBox txtPaymentReason;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtTotalPayment;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtIDBill;
+        private System.Windows.Forms.TextBox txtIDCusBill;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TabPage tpContractRenewal;
     }
 }

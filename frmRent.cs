@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,20 +23,30 @@ namespace QuanLyCaoOc
             dtgvListCusRent.DataSource = CustomerBinding;
             LoadListCustomer();
             AddCustomerBinding();
-            frmMain f = new frmMain();
         }
         
         public List<RoomDTO> LoadRoomListRoom(List<RoomDTO> list)
         {
-            float TotalPrice = 0;
+            double TotalPrice = 0;
             foreach (RoomDTO item in list)
             {
-                TotalPrice += (item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000);
+                TotalPrice +=(item.GiaCoBan + (double)item.SoChoLamViec * 200000 + (double)item.Tang * 500000);
                 txtIDRent.Text += item.MaPhong +",";
             }
-            txtPriceRent.Text = TotalPrice.ToString("c");
+            txtPriceRent.Text = TotalPrice.ToString();
+            txtIDContractRent.Text = (ContractRentalDAO.Instance.GetMaxIDRental()+1).ToString();
+            CalSumMoney();
             listRoom = list;
             return list;
+        }
+        double CalSumMoney()
+        {
+            CultureInfo culture = new CultureInfo("vi-VN");
+            double money = double.Parse(txtPriceRent.Text.ToString());
+            double nudValue = double.Parse(nudRentalPeriod.Value.ToString());
+            double SumMoney = money * nudValue;
+            txtMoney.Text = SumMoney.ToString("c", culture);
+            return SumMoney;
         }
         void LoadListCustomer()
         {
@@ -81,7 +92,30 @@ namespace QuanLyCaoOc
 
         private void btnBookRoom_Click(object sender, EventArgs e)
         {
-            
+            int idCus = 0;
+            int.TryParse(txtIDCusRent.Text, out idCus);
+            DateTime ValidityConTract = dtpValidityConTract.Value;
+            DateTime FirstPay = dtpFirstPay.Value;
+            int RentalPeriod = int.Parse(nudRentalPeriod.Value.ToString());
+            double SumOfMoney = CalSumMoney();
+            if (ContractRentalDAO.Instance.InsertContractRent(ValidityConTract, FirstPay, idCus) && BillDAO.Instance.InsertBill(FirstPay,"Tiền Phòng", SumOfMoney, idCus))
+                // tạo chi tiết hợp đồng thuê phòng cho mỗi phòng,và hóa đơn thanh toán
+            {
+                foreach (var item in listRoom)
+                {
+                    DateTime expiraionDate = ValidityConTract.AddMonths(RentalPeriod);
+                    float price = (item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000);
+                    ContractRental_InfoDAO.Instance.InsertContractRentInfo(RentalPeriod, price, item.MaPhong, ContractRentalDAO.Instance.GetMaxIDRental(), expiraionDate);// thêm chi tiết hợp đồng TP cho từng phòng
+                    BillInfoDAO.Instance.InsertBillInfoWithoutIDRenewal(BillDAO.Instance.GetMaxIDBill(),ContractRentalDAO.Instance.GetMaxIDRental());//Thêm chỉ tiết hóa đơn cho mỗi phòng thanh toán
+                }
+                MessageBox.Show("Tạo hợp đồng thành công!");
+                this.Close();
+            }
+        }
+
+        private void nudRentalPeriod_ValueChanged(object sender, EventArgs e)
+        {
+            CalSumMoney();  
         }
     }
 }
