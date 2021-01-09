@@ -91,6 +91,30 @@ namespace QuanLyCaoOc
             this.panel13 = new System.Windows.Forms.Panel();
             this.dtgvBill = new System.Windows.Forms.DataGridView();
             this.tpContractRenewal = new System.Windows.Forms.TabPage();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtIDCusRenewal = new System.Windows.Forms.TextBox();
+            this.dtpDateContractRenewal = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtIDRenewal = new System.Windows.Forms.TextBox();
+            this.txtNameCusRenewal = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnSearchCusRenewa = new System.Windows.Forms.Button();
+            this.dtgvListCusRenewal = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtIDRoomRenewal = new System.Windows.Forms.TextBox();
+            this.nudRenewalPeriod = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtTotalMoneyRenewal = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.btnRenewal = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtPriceRenewal = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cbbReasonRenewal = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.tcAdmin.SuspendLayout();
             this.tpCustomer.SuspendLayout();
@@ -111,6 +135,10 @@ namespace QuanLyCaoOc
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
+            this.tpContractRenewal.SuspendLayout();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvListCusRenewal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRenewalPeriod)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -132,6 +160,8 @@ namespace QuanLyCaoOc
             this.tcAdmin.SelectedIndex = 0;
             this.tcAdmin.Size = new System.Drawing.Size(941, 496);
             this.tcAdmin.TabIndex = 0;
+            this.tcAdmin.TabStop = false;
+            this.tcAdmin.SelectedIndexChanged += new System.EventHandler(this.tcAdmin_SelectedIndexChanged);
             // 
             // tpCustomer
             // 
@@ -163,7 +193,7 @@ namespace QuanLyCaoOc
             this.BtnLoadCus.Location = new System.Drawing.Point(809, 418);
             this.BtnLoadCus.Name = "BtnLoadCus";
             this.BtnLoadCus.Size = new System.Drawing.Size(85, 40);
-            this.BtnLoadCus.TabIndex = 9;
+            this.BtnLoadCus.TabIndex = 5;
             this.BtnLoadCus.Text = "Xem";
             this.BtnLoadCus.UseVisualStyleBackColor = true;
             this.BtnLoadCus.Click += new System.EventHandler(this.BtnLoadCus_Click);
@@ -173,7 +203,7 @@ namespace QuanLyCaoOc
             this.btnEditCus.Location = new System.Drawing.Point(617, 418);
             this.btnEditCus.Name = "btnEditCus";
             this.btnEditCus.Size = new System.Drawing.Size(85, 40);
-            this.btnEditCus.TabIndex = 8;
+            this.btnEditCus.TabIndex = 4;
             this.btnEditCus.Text = "Sửa";
             this.btnEditCus.UseVisualStyleBackColor = true;
             this.btnEditCus.Click += new System.EventHandler(this.btnEditCus_Click);
@@ -183,7 +213,7 @@ namespace QuanLyCaoOc
             this.btnDeleteCus.Location = new System.Drawing.Point(809, 352);
             this.btnDeleteCus.Name = "btnDeleteCus";
             this.btnDeleteCus.Size = new System.Drawing.Size(85, 40);
-            this.btnDeleteCus.TabIndex = 7;
+            this.btnDeleteCus.TabIndex = 3;
             this.btnDeleteCus.Text = "Xóa";
             this.btnDeleteCus.UseVisualStyleBackColor = true;
             this.btnDeleteCus.Click += new System.EventHandler(this.btnDeleteCus_Click);
@@ -193,7 +223,7 @@ namespace QuanLyCaoOc
             this.btnInsertCus.Location = new System.Drawing.Point(617, 352);
             this.btnInsertCus.Name = "btnInsertCus";
             this.btnInsertCus.Size = new System.Drawing.Size(85, 40);
-            this.btnInsertCus.TabIndex = 6;
+            this.btnInsertCus.TabIndex = 2;
             this.btnInsertCus.Text = "Thêm";
             this.btnInsertCus.UseVisualStyleBackColor = true;
             this.btnInsertCus.Click += new System.EventHandler(this.btnInsertCus_Click);
@@ -214,7 +244,7 @@ namespace QuanLyCaoOc
             this.panel5.Location = new System.Drawing.Point(604, 37);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(320, 309);
-            this.panel5.TabIndex = 2;
+            this.panel5.TabIndex = 1;
             // 
             // cbbSexCus
             // 
@@ -226,7 +256,7 @@ namespace QuanLyCaoOc
             this.cbbSexCus.Location = new System.Drawing.Point(137, 154);
             this.cbbSexCus.Name = "cbbSexCus";
             this.cbbSexCus.Size = new System.Drawing.Size(174, 21);
-            this.cbbSexCus.TabIndex = 7;
+            this.cbbSexCus.TabIndex = 1;
             // 
             // dtpDOBCus
             // 
@@ -234,7 +264,7 @@ namespace QuanLyCaoOc
             this.dtpDOBCus.Location = new System.Drawing.Point(137, 212);
             this.dtpDOBCus.Name = "dtpDOBCus";
             this.dtpDOBCus.Size = new System.Drawing.Size(174, 20);
-            this.dtpDOBCus.TabIndex = 4;
+            this.dtpDOBCus.TabIndex = 2;
             this.dtpDOBCus.Value = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             // 
             // txtIDCUS
@@ -243,21 +273,22 @@ namespace QuanLyCaoOc
             this.txtIDCUS.Name = "txtIDCUS";
             this.txtIDCUS.ReadOnly = true;
             this.txtIDCUS.Size = new System.Drawing.Size(174, 20);
-            this.txtIDCUS.TabIndex = 1;
+            this.txtIDCUS.TabIndex = 4;
+            this.txtIDCUS.TabStop = false;
             // 
             // txtNameCus
             // 
             this.txtNameCus.Location = new System.Drawing.Point(137, 105);
             this.txtNameCus.Name = "txtNameCus";
             this.txtNameCus.Size = new System.Drawing.Size(174, 20);
-            this.txtNameCus.TabIndex = 2;
+            this.txtNameCus.TabIndex = 0;
             // 
             // txtPhoneCus
             // 
             this.txtPhoneCus.Location = new System.Drawing.Point(137, 265);
             this.txtPhoneCus.Name = "txtPhoneCus";
             this.txtPhoneCus.Size = new System.Drawing.Size(174, 20);
-            this.txtPhoneCus.TabIndex = 5;
+            this.txtPhoneCus.TabIndex = 3;
             this.txtPhoneCus.TextChanged += new System.EventHandler(this.txtPhoneCus_TextChanged);
             // 
             // label6
@@ -327,7 +358,7 @@ namespace QuanLyCaoOc
             this.panel4.Location = new System.Drawing.Point(604, 6);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(320, 30);
-            this.panel4.TabIndex = 1;
+            this.panel4.TabIndex = 0;
             // 
             // btnSearchCus
             // 
@@ -335,7 +366,7 @@ namespace QuanLyCaoOc
             this.btnSearchCus.Location = new System.Drawing.Point(222, 2);
             this.btnSearchCus.Name = "btnSearchCus";
             this.btnSearchCus.Size = new System.Drawing.Size(89, 23);
-            this.btnSearchCus.TabIndex = 3;
+            this.btnSearchCus.TabIndex = 1;
             this.btnSearchCus.Text = "Tìm kiếm";
             this.btnSearchCus.UseVisualStyleBackColor = true;
             this.btnSearchCus.Click += new System.EventHandler(this.btnSearchCus_Click);
@@ -363,6 +394,7 @@ namespace QuanLyCaoOc
             this.dtgvCustomer.Name = "dtgvCustomer";
             this.dtgvCustomer.Size = new System.Drawing.Size(592, 452);
             this.dtgvCustomer.TabIndex = 0;
+            this.dtgvCustomer.TabStop = false;
             // 
             // tpAccount
             // 
@@ -545,6 +577,7 @@ namespace QuanLyCaoOc
             this.dtgvAccount.Name = "dtgvAccount";
             this.dtgvAccount.Size = new System.Drawing.Size(592, 452);
             this.dtgvAccount.TabIndex = 0;
+            this.dtgvAccount.TabStop = false;
             // 
             // tpBill
             // 
@@ -591,6 +624,7 @@ namespace QuanLyCaoOc
             this.txtPaymentReason.ReadOnly = true;
             this.txtPaymentReason.Size = new System.Drawing.Size(164, 20);
             this.txtPaymentReason.TabIndex = 13;
+            this.txtPaymentReason.TabStop = false;
             // 
             // label7
             // 
@@ -609,6 +643,7 @@ namespace QuanLyCaoOc
             this.txtTotalPayment.ReadOnly = true;
             this.txtTotalPayment.Size = new System.Drawing.Size(164, 20);
             this.txtTotalPayment.TabIndex = 11;
+            this.txtTotalPayment.TabStop = false;
             // 
             // label16
             // 
@@ -627,6 +662,7 @@ namespace QuanLyCaoOc
             this.txtIDBill.ReadOnly = true;
             this.txtIDBill.Size = new System.Drawing.Size(164, 20);
             this.txtIDBill.TabIndex = 1;
+            this.txtIDBill.TabStop = false;
             // 
             // txtIDCusBill
             // 
@@ -635,6 +671,7 @@ namespace QuanLyCaoOc
             this.txtIDCusBill.ReadOnly = true;
             this.txtIDCusBill.Size = new System.Drawing.Size(164, 20);
             this.txtIDCusBill.TabIndex = 2;
+            this.txtIDCusBill.TabStop = false;
             // 
             // label13
             // 
@@ -719,9 +756,12 @@ namespace QuanLyCaoOc
             this.dtgvBill.Name = "dtgvBill";
             this.dtgvBill.Size = new System.Drawing.Size(592, 452);
             this.dtgvBill.TabIndex = 0;
+            this.dtgvBill.TabStop = false;
             // 
             // tpContractRenewal
             // 
+            this.tpContractRenewal.Controls.Add(this.panel14);
+            this.tpContractRenewal.Controls.Add(this.label9);
             this.tpContractRenewal.Location = new System.Drawing.Point(4, 22);
             this.tpContractRenewal.Name = "tpContractRenewal";
             this.tpContractRenewal.Padding = new System.Windows.Forms.Padding(3);
@@ -729,6 +769,262 @@ namespace QuanLyCaoOc
             this.tpContractRenewal.TabIndex = 3;
             this.tpContractRenewal.Text = "Hợp đồng gia hạn";
             this.tpContractRenewal.UseVisualStyleBackColor = true;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.cbbReasonRenewal);
+            this.panel14.Controls.Add(this.label25);
+            this.panel14.Controls.Add(this.label24);
+            this.panel14.Controls.Add(this.txtPriceRenewal);
+            this.panel14.Controls.Add(this.btnRenewal);
+            this.panel14.Controls.Add(this.txtTotalMoneyRenewal);
+            this.panel14.Controls.Add(this.label23);
+            this.panel14.Controls.Add(this.nudRenewalPeriod);
+            this.panel14.Controls.Add(this.label21);
+            this.panel14.Controls.Add(this.label22);
+            this.panel14.Controls.Add(this.label20);
+            this.panel14.Controls.Add(this.txtIDRoomRenewal);
+            this.panel14.Controls.Add(this.label19);
+            this.panel14.Controls.Add(this.txtIDCusRenewal);
+            this.panel14.Controls.Add(this.dtpDateContractRenewal);
+            this.panel14.Controls.Add(this.label18);
+            this.panel14.Controls.Add(this.label17);
+            this.panel14.Controls.Add(this.txtIDRenewal);
+            this.panel14.Controls.Add(this.txtNameCusRenewal);
+            this.panel14.Controls.Add(this.label8);
+            this.panel14.Controls.Add(this.btnSearchCusRenewa);
+            this.panel14.Controls.Add(this.dtgvListCusRenewal);
+            this.panel14.Location = new System.Drawing.Point(6, 30);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(924, 437);
+            this.panel14.TabIndex = 3;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 50);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(85, 13);
+            this.label19.TabIndex = 35;
+            this.label19.Text = "Mã khách hàng:";
+            // 
+            // txtIDCusRenewal
+            // 
+            this.txtIDCusRenewal.Location = new System.Drawing.Point(148, 47);
+            this.txtIDCusRenewal.Name = "txtIDCusRenewal";
+            this.txtIDCusRenewal.ReadOnly = true;
+            this.txtIDCusRenewal.Size = new System.Drawing.Size(100, 20);
+            this.txtIDCusRenewal.TabIndex = 36;
+            this.txtIDCusRenewal.TabStop = false;
+            // 
+            // dtpDateContractRenewal
+            // 
+            this.dtpDateContractRenewal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateContractRenewal.Location = new System.Drawing.Point(148, 121);
+            this.dtpDateContractRenewal.Name = "dtpDateContractRenewal";
+            this.dtpDateContractRenewal.Size = new System.Drawing.Size(100, 20);
+            this.dtpDateContractRenewal.TabIndex = 34;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 125);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(136, 13);
+            this.label18.TabIndex = 33;
+            this.label18.Text = "Ngày ký hợp đồng gia hạn:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 15);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(112, 13);
+            this.label17.TabIndex = 20;
+            this.label17.Text = "Mã hợp đồng gia hạn:";
+            // 
+            // txtIDRenewal
+            // 
+            this.txtIDRenewal.Location = new System.Drawing.Point(148, 12);
+            this.txtIDRenewal.Name = "txtIDRenewal";
+            this.txtIDRenewal.ReadOnly = true;
+            this.txtIDRenewal.Size = new System.Drawing.Size(100, 20);
+            this.txtIDRenewal.TabIndex = 21;
+            this.txtIDRenewal.TabStop = false;
+            // 
+            // txtNameCusRenewal
+            // 
+            this.txtNameCusRenewal.Location = new System.Drawing.Point(148, 85);
+            this.txtNameCusRenewal.Name = "txtNameCusRenewal";
+            this.txtNameCusRenewal.Size = new System.Drawing.Size(100, 20);
+            this.txtNameCusRenewal.TabIndex = 0;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 89);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Tên khách hàng:";
+            // 
+            // btnSearchCusRenewa
+            // 
+            this.btnSearchCusRenewa.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchCusRenewa.Location = new System.Drawing.Point(264, 84);
+            this.btnSearchCusRenewa.Name = "btnSearchCusRenewa";
+            this.btnSearchCusRenewa.Size = new System.Drawing.Size(89, 23);
+            this.btnSearchCusRenewa.TabIndex = 1;
+            this.btnSearchCusRenewa.Text = "Tìm kiếm";
+            this.btnSearchCusRenewa.UseVisualStyleBackColor = true;
+            this.btnSearchCusRenewa.Click += new System.EventHandler(this.btnSearchCusRenewa_Click);
+            // 
+            // dtgvListCusRenewal
+            // 
+            this.dtgvListCusRenewal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvListCusRenewal.Location = new System.Drawing.Point(3, 256);
+            this.dtgvListCusRenewal.Name = "dtgvListCusRenewal";
+            this.dtgvListCusRenewal.Size = new System.Drawing.Size(918, 178);
+            this.dtgvListCusRenewal.TabIndex = 2;
+            this.dtgvListCusRenewal.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(371, 3);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(190, 24);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Hợp đồng gia hạn";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(689, 18);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(58, 13);
+            this.label20.TabIndex = 37;
+            this.label20.Text = "Mã phòng:";
+            // 
+            // txtIDRoomRenewal
+            // 
+            this.txtIDRoomRenewal.Location = new System.Drawing.Point(753, 15);
+            this.txtIDRoomRenewal.Name = "txtIDRoomRenewal";
+            this.txtIDRoomRenewal.ReadOnly = true;
+            this.txtIDRoomRenewal.Size = new System.Drawing.Size(100, 20);
+            this.txtIDRoomRenewal.TabIndex = 38;
+            this.txtIDRoomRenewal.TabStop = false;
+            // 
+            // nudRenewalPeriod
+            // 
+            this.nudRenewalPeriod.Location = new System.Drawing.Point(753, 86);
+            this.nudRenewalPeriod.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudRenewalPeriod.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudRenewalPeriod.Name = "nudRenewalPeriod";
+            this.nudRenewalPeriod.Size = new System.Drawing.Size(56, 20);
+            this.nudRenewalPeriod.TabIndex = 41;
+            this.nudRenewalPeriod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudRenewalPeriod.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudRenewalPeriod.ValueChanged += new System.EventHandler(this.nudRenewalPeriod_ValueChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(815, 92);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(38, 13);
+            this.label21.TabIndex = 40;
+            this.label21.Text = "Tháng";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(655, 88);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(92, 13);
+            this.label22.TabIndex = 39;
+            this.label22.Text = "Thời gian gia hạn:";
+            // 
+            // txtTotalMoneyRenewal
+            // 
+            this.txtTotalMoneyRenewal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalMoneyRenewal.Location = new System.Drawing.Point(419, 224);
+            this.txtTotalMoneyRenewal.Name = "txtTotalMoneyRenewal";
+            this.txtTotalMoneyRenewal.ReadOnly = true;
+            this.txtTotalMoneyRenewal.Size = new System.Drawing.Size(191, 26);
+            this.txtTotalMoneyRenewal.TabIndex = 43;
+            this.txtTotalMoneyRenewal.TabStop = false;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(314, 227);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(99, 20);
+            this.label23.TabIndex = 42;
+            this.label23.Text = "Thành tiền:";
+            // 
+            // btnRenewal
+            // 
+            this.btnRenewal.Location = new System.Drawing.Point(818, 210);
+            this.btnRenewal.Name = "btnRenewal";
+            this.btnRenewal.Size = new System.Drawing.Size(98, 40);
+            this.btnRenewal.TabIndex = 44;
+            this.btnRenewal.Text = "Gia hạn";
+            this.btnRenewal.UseVisualStyleBackColor = true;
+            this.btnRenewal.Click += new System.EventHandler(this.btnRenewal_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(689, 53);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(60, 13);
+            this.label24.TabIndex = 45;
+            this.label24.Text = "Giá Phòng:";
+            // 
+            // txtPriceRenewal
+            // 
+            this.txtPriceRenewal.Location = new System.Drawing.Point(753, 50);
+            this.txtPriceRenewal.Name = "txtPriceRenewal";
+            this.txtPriceRenewal.ReadOnly = true;
+            this.txtPriceRenewal.Size = new System.Drawing.Size(100, 20);
+            this.txtPriceRenewal.TabIndex = 46;
+            this.txtPriceRenewal.TabStop = false;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(653, 121);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(94, 13);
+            this.label25.TabIndex = 47;
+            this.label25.Text = "Lý do Thanh toán:";
+            // 
+            // cbbReasonRenewal
+            // 
+            this.cbbReasonRenewal.FormattingEnabled = true;
+            this.cbbReasonRenewal.Items.AddRange(new object[] {
+            "Tiền phòng",
+            "Tiền điện nước"});
+            this.cbbReasonRenewal.Location = new System.Drawing.Point(753, 118);
+            this.cbbReasonRenewal.Name = "cbbReasonRenewal";
+            this.cbbReasonRenewal.Size = new System.Drawing.Size(100, 21);
+            this.cbbReasonRenewal.TabIndex = 48;
             // 
             // frmAdmin
             // 
@@ -766,6 +1062,12 @@ namespace QuanLyCaoOc
             this.panel12.PerformLayout();
             this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
+            this.tpContractRenewal.ResumeLayout(false);
+            this.tpContractRenewal.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvListCusRenewal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRenewalPeriod)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -834,5 +1136,29 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TabPage tpContractRenewal;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.DataGridView dtgvListCusRenewal;
+        private System.Windows.Forms.TextBox txtNameCusRenewal;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnSearchCusRenewa;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtIDRenewal;
+        private System.Windows.Forms.DateTimePicker dtpDateContractRenewal;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtIDCusRenewal;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtIDRoomRenewal;
+        private System.Windows.Forms.NumericUpDown nudRenewalPeriod;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtTotalMoneyRenewal;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button btnRenewal;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtPriceRenewal;
+        private System.Windows.Forms.ComboBox cbbReasonRenewal;
+        private System.Windows.Forms.Label label25;
     }
 }

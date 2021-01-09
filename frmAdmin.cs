@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace QuanLyCaoOc
         BindingSource CustomerBinding = new BindingSource();
         BindingSource AccountBinding = new BindingSource();
         BindingSource BillBinding = new BindingSource();
+        BindingSource CustomerRenewaBinding = new BindingSource();
         public AccountDTO LoginAccount;
         public frmAdmin()
         {
@@ -24,14 +26,39 @@ namespace QuanLyCaoOc
             dtgvCustomer.DataSource = CustomerBinding;
             dtgvAccount.DataSource = AccountBinding;
             dtgvBill.DataSource = BillBinding;
+            dtgvListCusRenewal.DataSource = CustomerRenewaBinding;
             LoadListCustomer();
             AddCustomerBinding();
             LoadListAccount();
             AddAccountBinding();
             LoadListBill();
             AddBillBinding();
+            LoadListCustomerRenewal();
+            AddCustomerRenewalBinding();
         }
-
+        private void tcAdmin_SelectedIndexChanged(object sender, EventArgs e) // chọn accept button cho mỗi tag
+        {
+            if (tcAdmin.SelectedTab == tcAdmin.TabPages["tpCustomer"])
+            {
+                this.AcceptButton = btnSearchCus;
+                txtSearchCus.Focus(); //focus textbox
+            }
+            else if (tcAdmin.SelectedTab == tcAdmin.TabPages["tpAccount"])
+            {
+                this.AcceptButton = btnSearchUser;
+                txtSearchUser.Focus();
+            }
+            else if (tcAdmin.SelectedTab == tcAdmin.TabPages["tpBill"])
+            {
+                this.AcceptButton = btnSearchBill;
+                txtSearchBill.Focus();
+            }
+            else if (tcAdmin.SelectedTab == tcAdmin.TabPages["tpContractRenewal"])
+            {
+                this.AcceptButton = btnSearchCusRenewa;
+                txtNameCusRenewal.Focus();
+            }
+        }
         void LoadListCustomer()
         {
             CustomerBinding.DataSource = CustomerDAO.Instance.GetListCustomer(); // dùng custombiding để khi load lại không bị lỗi
@@ -79,8 +106,11 @@ namespace QuanLyCaoOc
             BillBinding.DataSource = BillDAO.Instance.GetListBill();
             dtgvBill.Columns[0].HeaderText = "Mã hóa đơn";
             dtgvBill.Columns[1].HeaderText = "Ngày thanh toán";
+            dtgvBill.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm"; //format datetime
             dtgvBill.Columns[2].HeaderText = "Lý do thanh toán";
             dtgvBill.Columns[3].HeaderText = "Tổng tiền thanh toán";
+            dtgvBill.Columns[3].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("vi-VN");//set culture về vn cho dtgv
+            dtgvBill.Columns[3].DefaultCellStyle.Format = "c";
             foreach (DataGridViewColumn col in dtgvBill.Columns)
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //căn lề giữ cho tiêu đề
@@ -279,15 +309,15 @@ namespace QuanLyCaoOc
             else
                 MessageBox.Show("Sửa thất bại", "Thông báo");
         }
-        List<CustomerDTO> SearchCusByName(string name)
+        List<CustomerDTO> SearchListCusByName(string name)
         {
-            List<CustomerDTO> listCus =CustomerDAO.Instance.SearchCusomterByName(name);
+            List<CustomerDTO> listCus =CustomerDAO.Instance.SearchListCusomterByName(name);
             return listCus;
         }
 
         private void btnSearchCus_Click(object sender, EventArgs e)
         {
-           CustomerBinding.DataSource= SearchCusByName(txtSearchCus.Text);
+           CustomerBinding.DataSource= SearchListCusByName(txtSearchCus.Text);
         }
 
         DataTable SearchAccByName(string name)
@@ -314,6 +344,73 @@ namespace QuanLyCaoOc
             List<BillDTO> listCus = BillDAO.Instance.SearchBillByIDBill(id);
             return listCus;
         }
-       
+        #region Renewa
+
+        List<CusRenewal_InfoDTO> SearchCusRenewal_InfoByListCus(string name)
+        {
+            List<CusRenewal_InfoDTO> listCus = CusRenewal_InfoDAO.Instance.SearchListContractRenewal_InfoByListCusID(CustomerDAO.Instance.SearchListCusomterByName(name));
+            return listCus;
+        }
+        void LoadListCustomerRenewal()
+        {
+            txtIDRenewal.Text = (ContractRenewalDAO.Instance.GetMaxIDRenewal() + 1).ToString();
+            cbbReasonRenewal.SelectedIndex = 0; //giá trị mặc đinh cho cbb
+            CustomerRenewaBinding.DataSource = CusRenewal_InfoDAO.Instance.GetListCusRenewal_Info(); // dùng custombiding để khi load lại không bị lỗi
+            dtgvListCusRenewal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtgvListCusRenewal.Columns[dtgvListCusRenewal.ColumnCount - 4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;// cho dtgv vừa khung hình 
+            dtgvListCusRenewal.Columns[0].HeaderText = "Mã khách hàng";
+            dtgvListCusRenewal.Columns[1].HeaderText = "Mã phòng";
+            dtgvListCusRenewal.Columns[2].HeaderText = "Mã hợp đồng thuê phòng";
+            dtgvListCusRenewal.Columns[3].HeaderText = "Mã chi tiết hợp đồng thuê phòng";
+            dtgvListCusRenewal.Columns[4].HeaderText = "Tên khách hàng thuê phòng";
+            dtgvListCusRenewal.Columns[5].HeaderText = "Ngày hết hạn thuê phòng";
+            dtgvListCusRenewal.Columns[6].HeaderText = "Giá thuê phòng mỗi tháng";
+
+            dtgvListCusRenewal.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+            dtgvListCusRenewal.Columns[6].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("vi-VN");//set culture về vn cho dtgv
+            dtgvListCusRenewal.Columns[6].DefaultCellStyle.Format = "c";
+            foreach (DataGridViewColumn col in dtgvListCusRenewal.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //căn lề giữ cho tiêu đề
+            }
+        }
+        void AddCustomerRenewalBinding()
+        {
+            txtIDCusRenewal.DataBindings.Add(new Binding("text", dtgvListCusRenewal.DataSource, "MaKH", true, DataSourceUpdateMode.Never));
+            txtNameCusRenewal.DataBindings.Add(new Binding("text", dtgvListCusRenewal.DataSource, "TenKH", true, DataSourceUpdateMode.Never));
+            txtIDRoomRenewal.DataBindings.Add(new Binding("text", dtgvListCusRenewal.DataSource, "MaPhong", true, DataSourceUpdateMode.Never));
+            txtPriceRenewal.DataBindings.Add(new Binding("text", dtgvListCusRenewal.DataSource, "GiaTP", true, DataSourceUpdateMode.Never));
+            //cbbUserType.DataBindings.Add(new Binding("text", dtgvBill.DataSource, "Loai", true, DataSourceUpdateMode.Never));
+        }
+        private void btnSearchCusRenewa_Click(object sender, EventArgs e)
+        {
+            CustomerRenewaBinding.DataSource = SearchCusRenewal_InfoByListCus(txtNameCusRenewal.Text);
+        }
+        double CalSumMoneyRenewal()
+        {
+            CultureInfo culture = new CultureInfo("vi-VN");
+            double money = double.Parse(txtPriceRenewal.Text.ToString());
+            double nudValue = double.Parse(nudRenewalPeriod.Value.ToString());
+            double SumMoney = money * nudValue;
+            txtTotalMoneyRenewal.Text = SumMoney.ToString("c", culture);
+            return SumMoney;
+        }
+        private void nudRenewalPeriod_ValueChanged(object sender, EventArgs e)
+        {
+            CalSumMoneyRenewal();
+        }
+
+
+        #endregion
+
+        private void btnRenewal_Click(object sender, EventArgs e)
+        {
+            DateTime DateRenewal = dtpDateContractRenewal.Value;
+            int idCus = 0;
+            int.TryParse(txtIDCusRenewal.Text, out idCus);
+            double SumOfMoney = CalSumMoneyRenewal();
+            ContractRenewalDAO.Instance.InsertContractRenewal(DateRenewal, idCus);
+            BillDAO.Instance.InsertBill(DateTime.Now, cbbReasonRenewal.Text.ToString(), SumOfMoney, idCus);
+        }
     }
 }

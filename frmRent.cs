@@ -35,11 +35,11 @@ namespace QuanLyCaoOc
             }
             txtPriceRent.Text = TotalPrice.ToString();
             txtIDContractRent.Text = (ContractRentalDAO.Instance.GetMaxIDRental()+1).ToString();
-            CalSumMoney();
+            CalSumMoneyrent();
             listRoom = list;
             return list;
         }
-        double CalSumMoney()
+        double CalSumMoneyrent()
         {
             CultureInfo culture = new CultureInfo("vi-VN");
             double money = double.Parse(txtPriceRent.Text.ToString());
@@ -69,7 +69,7 @@ namespace QuanLyCaoOc
         }
         List<CustomerDTO> SearchCusByName(string name)
         {
-            List<CustomerDTO> listCus = CustomerDAO.Instance.SearchCusomterByName(name);
+            List<CustomerDTO> listCus = CustomerDAO.Instance.SearchListCusomterByName(name);
             return listCus;
         }
 
@@ -97,14 +97,14 @@ namespace QuanLyCaoOc
             DateTime ValidityConTract = dtpValidityConTract.Value;
             DateTime FirstPay = dtpFirstPay.Value;
             int RentalPeriod = int.Parse(nudRentalPeriod.Value.ToString());
-            double SumOfMoney = CalSumMoney();
+            double SumOfMoney = CalSumMoneyrent();
             if (ContractRentalDAO.Instance.InsertContractRent(ValidityConTract, FirstPay, idCus) && BillDAO.Instance.InsertBill(FirstPay,"Tiền Phòng", SumOfMoney, idCus))
                 // tạo chi tiết hợp đồng thuê phòng cho mỗi phòng,và hóa đơn thanh toán
             {
                 foreach (var item in listRoom)
                 {
                     DateTime expiraionDate = ValidityConTract.AddMonths(RentalPeriod);
-                    float price = (item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000);
+                    double price = (item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000);
                     ContractRental_InfoDAO.Instance.InsertContractRentInfo(RentalPeriod, price, item.MaPhong, ContractRentalDAO.Instance.GetMaxIDRental(), expiraionDate);// thêm chi tiết hợp đồng TP cho từng phòng
                     BillInfoDAO.Instance.InsertBillInfoWithoutIDRenewal(BillDAO.Instance.GetMaxIDBill(),ContractRentalDAO.Instance.GetMaxIDRental());//Thêm chỉ tiết hóa đơn cho mỗi phòng thanh toán
                 }
@@ -115,7 +115,12 @@ namespace QuanLyCaoOc
 
         private void nudRentalPeriod_ValueChanged(object sender, EventArgs e)
         {
-            CalSumMoney();  
+            CalSumMoneyrent();  
+        }
+
+        private void dtgvListCusRent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

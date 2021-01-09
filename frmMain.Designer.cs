@@ -108,7 +108,7 @@ namespace QuanLyCaoOc
             this.panel1.Location = new System.Drawing.Point(807, 35);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(457, 611);
-            this.panel1.TabIndex = 3;
+            this.panel1.TabIndex = 0;
             // 
             // panel3
             // 
@@ -131,6 +131,7 @@ namespace QuanLyCaoOc
             this.txtTotalPrice.ReadOnly = true;
             this.txtTotalPrice.Size = new System.Drawing.Size(139, 22);
             this.txtTotalPrice.TabIndex = 12;
+            this.txtTotalPrice.TabStop = false;
             // 
             // label8
             // 
@@ -167,6 +168,7 @@ namespace QuanLyCaoOc
             this.lvRoom.Name = "lvRoom";
             this.lvRoom.Size = new System.Drawing.Size(444, 247);
             this.lvRoom.TabIndex = 2;
+            this.lvRoom.TabStop = false;
             this.lvRoom.UseCompatibleStateImageBehavior = false;
             this.lvRoom.View = System.Windows.Forms.View.Details;
             // 
@@ -199,7 +201,7 @@ namespace QuanLyCaoOc
             this.btnBookRoom.Location = new System.Drawing.Point(349, 283);
             this.btnBookRoom.Name = "btnBookRoom";
             this.btnBookRoom.Size = new System.Drawing.Size(98, 40);
-            this.btnBookRoom.TabIndex = 10;
+            this.btnBookRoom.TabIndex = 0;
             this.btnBookRoom.Text = "Đặt Phòng";
             this.btnBookRoom.UseVisualStyleBackColor = true;
             this.btnBookRoom.Click += new System.EventHandler(this.btnBookRoom_Click);
@@ -221,7 +223,7 @@ namespace QuanLyCaoOc
             this.panel2.Controls.Add(this.cbbFloor);
             this.panel2.Location = new System.Drawing.Point(4, 25);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(450, 202);
+            this.panel2.Size = new System.Drawing.Size(447, 202);
             this.panel2.TabIndex = 1;
             // 
             // btnDeleteOneLV
@@ -229,7 +231,7 @@ namespace QuanLyCaoOc
             this.btnDeleteOneLV.Location = new System.Drawing.Point(216, 159);
             this.btnDeleteOneLV.Name = "btnDeleteOneLV";
             this.btnDeleteOneLV.Size = new System.Drawing.Size(106, 40);
-            this.btnDeleteOneLV.TabIndex = 13;
+            this.btnDeleteOneLV.TabIndex = 1;
             this.btnDeleteOneLV.Text = "Xóa phòng đả chọn";
             this.btnDeleteOneLV.UseVisualStyleBackColor = true;
             this.btnDeleteOneLV.Click += new System.EventHandler(this.btnDeleteOneLV_Click);
@@ -239,7 +241,7 @@ namespace QuanLyCaoOc
             this.btnResetLV.Location = new System.Drawing.Point(328, 159);
             this.btnResetLV.Name = "btnResetLV";
             this.btnResetLV.Size = new System.Drawing.Size(119, 40);
-            this.btnResetLV.TabIndex = 12;
+            this.btnResetLV.TabIndex = 2;
             this.btnResetLV.Text = "Xóa danh sách phòng muốn thuê";
             this.btnResetLV.UseVisualStyleBackColor = true;
             this.btnResetLV.Click += new System.EventHandler(this.btnResetLV_Click);
@@ -249,7 +251,7 @@ namespace QuanLyCaoOc
             this.btnAddListRoomRent.Location = new System.Drawing.Point(100, 159);
             this.btnAddListRoomRent.Name = "btnAddListRoomRent";
             this.btnAddListRoomRent.Size = new System.Drawing.Size(106, 40);
-            this.btnAddListRoomRent.TabIndex = 11;
+            this.btnAddListRoomRent.TabIndex = 0;
             this.btnAddListRoomRent.Text = "Thêm vào danh sách muốn thuê";
             this.btnAddListRoomRent.UseVisualStyleBackColor = true;
             this.btnAddListRoomRent.Click += new System.EventHandler(this.btnAddListRoomRent_Click);
@@ -261,6 +263,7 @@ namespace QuanLyCaoOc
             this.txtAddress.ReadOnly = true;
             this.txtAddress.Size = new System.Drawing.Size(347, 20);
             this.txtAddress.TabIndex = 9;
+            this.txtAddress.TabStop = false;
             // 
             // label6
             // 
@@ -278,6 +281,7 @@ namespace QuanLyCaoOc
             this.txtNOW.ReadOnly = true;
             this.txtNOW.Size = new System.Drawing.Size(30, 20);
             this.txtNOW.TabIndex = 7;
+            this.txtNOW.TabStop = false;
             // 
             // label5
             // 
@@ -295,6 +299,7 @@ namespace QuanLyCaoOc
             this.txtAera.ReadOnly = true;
             this.txtAera.Size = new System.Drawing.Size(30, 20);
             this.txtAera.TabIndex = 5;
+            this.txtAera.TabStop = false;
             // 
             // label1
             // 
@@ -321,6 +326,7 @@ namespace QuanLyCaoOc
             this.txtIDRoom.ReadOnly = true;
             this.txtIDRoom.Size = new System.Drawing.Size(30, 20);
             this.txtIDRoom.TabIndex = 1;
+            this.txtIDRoom.TabStop = false;
             // 
             // label3
             // 
@@ -360,14 +366,14 @@ namespace QuanLyCaoOc
             // thôngTinCáNhânToolStripMenuItem
             // 
             this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
-            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.thôngTinCáNhânToolStripMenuItem.Text = "Thông tin tài khoản";
             this.thôngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
@@ -391,6 +397,7 @@ namespace QuanLyCaoOc
             // 
             // frmMain
             // 
+            this.AcceptButton = this.btnResetLV;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1276, 661);

@@ -30,7 +30,7 @@ namespace QuanLyCaoOc
             InitializeComponent();
             this.LoginAcc = acc;
             cbbFloor.SelectedItem = "1";
-            ChangeAccount(acc.Loai);
+            //ChangeAccount(acc.Loai);
         }
         private AccountDTO LoginAcc;
 
@@ -95,7 +95,7 @@ namespace QuanLyCaoOc
                     if (!found)
                     {
                         ListViewItem lvItem = new ListViewItem(item.MaPhong.ToString());
-                        float Price = item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000;
+                        double Price = item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000;
                         lvItem.SubItems.Add(item.Tang.ToString());
                         lvItem.SubItems.Add(item.DTSuDung.ToString());
                         lvItem.SubItems.Add(item.SoChoLamViec.ToString());
