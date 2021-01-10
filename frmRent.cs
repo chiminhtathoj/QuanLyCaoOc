@@ -50,6 +50,7 @@ namespace QuanLyCaoOc
         }
         void LoadListCustomer()
         {
+            dtgvBill.Visible = false;
             dtpFirstPay.Format = DateTimePickerFormat.Custom;
             dtpFirstPay.CustomFormat = "dd/MM/yyyy";//sửa định dạng 
             dtpValidityConTract.Format = DateTimePickerFormat.Custom;
@@ -92,25 +93,64 @@ namespace QuanLyCaoOc
 
         private void btnBookRoom_Click(object sender, EventArgs e)
         {
-            int idCus = 0;
-            int.TryParse(txtIDCusRent.Text, out idCus);
-            DateTime ValidityConTract = dtpValidityConTract.Value;
-            DateTime FirstPay = dtpFirstPay.Value;
-            int RentalPeriod = int.Parse(nudRentalPeriod.Value.ToString());
-            double SumOfMoney = CalSumMoneyrent();
-            if (ContractRentalDAO.Instance.InsertContractRent(ValidityConTract, FirstPay, idCus) && BillDAO.Instance.InsertBill(FirstPay,"Tiền Phòng", SumOfMoney, idCus))
-                // tạo chi tiết hợp đồng thuê phòng cho mỗi phòng,và hóa đơn thanh toán
+            
+            if (txtNameCusRent != null && !string.IsNullOrWhiteSpace(txtNameCusRent.Text))
             {
-                foreach (var item in listRoom)
+                int idCus = 0;
+                int.TryParse(txtIDCusRent.Text, out idCus);
+                DateTime ValidityConTract = dtpValidityConTract.Value;
+                DateTime FirstPay = dtpFirstPay.Value;
+                int RentalPeriod = int.Parse(nudRentalPeriod.Value.ToString());
+                double SumOfMoney = CalSumMoneyrent();
+                if (ContractRentalDAO.Instance.InsertContractRent(ValidityConTract, FirstPay, idCus))
+                // tạo chi tiết hợp đồng thuê phòng cho mỗi phòng,và hóa đơn thanh toán
                 {
-                    DateTime expiraionDate = ValidityConTract.AddMonths(RentalPeriod);
-                    double price = (item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000);
-                    ContractRental_InfoDAO.Instance.InsertContractRentInfo(RentalPeriod, price, item.MaPhong, ContractRentalDAO.Instance.GetMaxIDRental(), expiraionDate);// thêm chi tiết hợp đồng TP cho từng phòng
-                    BillInfoDAO.Instance.InsertBillInfoWithoutIDRenewal(BillDAO.Instance.GetMaxIDBill(),ContractRentalDAO.Instance.GetMaxIDRental());//Thêm chỉ tiết hóa đơn cho mỗi phòng thanh toán
+                    if (BillDAO.Instance.InsertBill(FirstPay, "Tiền Phòng", SumOfMoney, idCus))
+                    {
+
+
+                        foreach (var item in listRoom)
+                        {
+                            DateTime expiraionDate = ValidityConTract.AddMonths(RentalPeriod);
+                            double price = (item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000);
+                            ContractRental_InfoDAO.Instance.InsertContractRentInfo(RentalPeriod, price, item.MaPhong, ContractRentalDAO.Instance.GetMaxIDRental(), expiraionDate);// thêm chi tiết hợp đồng TP cho từng phòng
+                            BillInfoDAO.Instance.InsertBillInfoWithoutIDRenewal(BillDAO.Instance.GetMaxIDBill(), ContractRentalDAO.Instance.GetMaxIDRental());//Thêm chỉ tiết hóa đơn cho mỗi phòng thanh toán
+                        }
+                        MessageBox.Show("Tạo hợp đồng thành công!");
+                        DialogResult dialog = MessageBox.Show("Bạn có muốn in hóa đơn không?", "In hóa đơn", MessageBoxButtons.YesNo);
+                        if(dialog == DialogResult.Yes)
+                        {
+                            DGVPrinter printer = new DGVPrinter();
+                            dtgvBill.DataSource = BillDAO.Instance.GetBillByBillID(BillDAO.Instance.GetMaxIDBill());
+                            dtgvBill.Columns[0].HeaderText = "Mã hóa đơn";
+                            dtgvBill.Columns[1].HeaderText = "Ngày thanh toán";
+                            dtgvBill.Columns[2].HeaderText = "Lý do thanh toán";
+                            dtgvBill.Columns[3].HeaderText = "Tổng tiền thanh toán";
+                            dtgvBill.Columns[4].HeaderText = "Mã khách hàng";
+                            foreach (DataGridViewColumn col in dtgvBill.Columns)
+                            {
+                                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //căn lề giữ cho tiêu đề
+                            }
+                            printer.Title= " \r\n\r\r Hóa đơn thanh toán hợp đồng thuê phòng\r\n\r\n  ";
+                            printer.SubTitle = "Tên khách hàng:    " + txtNameCusRent.Text.ToString();
+                            printer.PageNumbers = true;
+                            printer.PageNumberInHeader = false;
+                            printer.PorportionalColumns = true;
+                            printer.HeaderCellAlignment = StringAlignment.Near;
+                            printer.PrintDataGridView(dtgvBill);
+                        }
+                        else if (dialog == DialogResult.No)
+                        {
+                        }
+                        this.Close();
+                    }
                 }
-                MessageBox.Show("Tạo hợp đồng thành công!");
-                this.Close();
             }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng cần thuê phòng!");
+            }
+
         }
 
         private void nudRentalPeriod_ValueChanged(object sender, EventArgs e)
@@ -121,6 +161,24 @@ namespace QuanLyCaoOc
         private void dtgvListCusRent_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dtpValidityConTract_ValueChanged(object sender, EventArgs e)
+        {
+            if(dtpValidityConTract.Value.Date < DateTime.Now.Date)
+            {
+                MessageBox.Show("Vui lòng chọn thời gian hiệu lực lớn hơn hiện tại!");
+                dtpValidityConTract.Value = DateTime.Now;
+            }
+        }
+
+        private void dtpFirstPay_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpFirstPay.Value.Date < DateTime.Now.Date)
+            {
+                MessageBox.Show("Vui lòng chọn thời gian thanh toán đầu tiên lớn hơn hiện tại!");
+                dtpFirstPay.Value = DateTime.Now;
+            }
         }
     }
 }

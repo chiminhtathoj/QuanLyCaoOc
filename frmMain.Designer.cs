@@ -80,6 +80,7 @@ namespace QuanLyCaoOc
             // cbbFloor
             // 
             this.cbbFloor.DropDownHeight = 100;
+            this.cbbFloor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbFloor.FormattingEnabled = true;
             this.cbbFloor.IntegralHeight = false;
             this.cbbFloor.Items.AddRange(new object[] {
@@ -95,9 +96,8 @@ namespace QuanLyCaoOc
             "10"});
             this.cbbFloor.Location = new System.Drawing.Point(100, 35);
             this.cbbFloor.Name = "cbbFloor";
-            this.cbbFloor.Size = new System.Drawing.Size(30, 21);
+            this.cbbFloor.Size = new System.Drawing.Size(37, 21);
             this.cbbFloor.TabIndex = 1;
-            this.cbbFloor.Text = "Tầng";
             this.cbbFloor.SelectedIndexChanged += new System.EventHandler(this.cbbFloor_SelectedIndexChanged);
             // 
             // panel1
@@ -279,7 +279,7 @@ namespace QuanLyCaoOc
             this.txtNOW.Location = new System.Drawing.Point(100, 97);
             this.txtNOW.Name = "txtNOW";
             this.txtNOW.ReadOnly = true;
-            this.txtNOW.Size = new System.Drawing.Size(30, 20);
+            this.txtNOW.Size = new System.Drawing.Size(37, 20);
             this.txtNOW.TabIndex = 7;
             this.txtNOW.TabStop = false;
             // 
@@ -297,7 +297,7 @@ namespace QuanLyCaoOc
             this.txtAera.Location = new System.Drawing.Point(100, 65);
             this.txtAera.Name = "txtAera";
             this.txtAera.ReadOnly = true;
-            this.txtAera.Size = new System.Drawing.Size(30, 20);
+            this.txtAera.Size = new System.Drawing.Size(37, 20);
             this.txtAera.TabIndex = 5;
             this.txtAera.TabStop = false;
             // 
@@ -324,7 +324,7 @@ namespace QuanLyCaoOc
             this.txtIDRoom.Location = new System.Drawing.Point(100, 6);
             this.txtIDRoom.Name = "txtIDRoom";
             this.txtIDRoom.ReadOnly = true;
-            this.txtIDRoom.Size = new System.Drawing.Size(30, 20);
+            this.txtIDRoom.Size = new System.Drawing.Size(37, 20);
             this.txtIDRoom.TabIndex = 1;
             this.txtIDRoom.TabStop = false;
             // 
@@ -397,7 +397,7 @@ namespace QuanLyCaoOc
             // 
             // frmMain
             // 
-            this.AcceptButton = this.btnResetLV;
+            this.AcceptButton = this.btnAddListRoomRent;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1276, 661);
@@ -407,7 +407,7 @@ namespace QuanLyCaoOc
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
+            this.Text = " Quản lý cao ốc";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
