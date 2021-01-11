@@ -1,4 +1,5 @@
-﻿using DAO;
+﻿using BUS;
+using DAO;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -36,10 +37,9 @@ namespace QuanLyCaoOc
         {
             string UserName = txtUserName.Text;
             string PassWork = txtPassWork.Text;
-            if (/*Login(UserName, PassWork)*/true)
+            if (AccountBUS.Instance.Login(UserName, PassWork)/*true*/)
             {
-                AccountDTO LoginAcc = AccountDAO.Instance.GetAccountByUserName(UserName);
-                frmMain f = new frmMain(LoginAcc);
+                frmMain f = new frmMain(AccountBUS.Instance.LoginAcc(UserName));
                 this.Hide();
                 f.ShowDialog();
                 this.Show();
@@ -47,10 +47,6 @@ namespace QuanLyCaoOc
             }
             else
                 MessageBox.Show("Sai tên tài khoản hoặc mật khẩu","Thông báo!");
-        }
-        bool Login(string UserName,string PassWork)
-        {
-            return AccountDAO.Instance.Login(UserName,PassWork);
         }
     }
 }

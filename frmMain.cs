@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BUS;
 using DAO;
 using DTO;
 
@@ -19,7 +20,6 @@ namespace QuanLyCaoOc
         public delegate List<RoomDTO> del_ListRoom(List<RoomDTO> list);
         public del_ListRoom GetListRoom;
         List<RoomDTO> ListRoomGB = new List<RoomDTO>();
-
         public frmMain()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace QuanLyCaoOc
             InitializeComponent();
             this.LoginAcc = acc;
             cbbFloor.SelectedItem = "1";
-            //ChangeAccount(acc.Loai);
+            ChangeAccount(acc.Loai);
         }
         private AccountDTO LoginAcc;
 
@@ -41,12 +41,12 @@ namespace QuanLyCaoOc
             /*CultureInfo culture = new CultureInfo("vi-VN"); *///Chuyển culture về VN
             //Thread.CurrentThread.CurrentCulture = culture; // chỉ dùng trong thread này,xài cái này sẻ lỗi format kiểu dữ liệu datetime
             flpRoom.Controls.Clear();
-            List<RoomDTO> RoomList = RoomDAO.Instance.LoadRoomList();
+            List<RoomDTO> RoomList = RoomBUS.Instance.LoadRoomList();
             foreach (RoomDTO item in RoomList)
             {
                 if (item.Tang == floor)
                 {
-                    Button btn = new Button() { Width = RoomDAO.width, Height = RoomDAO.height };
+                    Button btn = new Button() { Width = RoomBUS.width, Height = RoomBUS.height };
                     btn.Text = item.MaPhong + "\n" + item.TinhTrang;
                     btn.Click += Btn_Click;
                     btn.Tag = item;
@@ -64,13 +64,14 @@ namespace QuanLyCaoOc
 
                 }
             }
+            
         }
         List<RoomDTO> ShowListRoomRent(string id)
         {
             List<RoomDTO> listRoom = new List<RoomDTO>();
             try
             {
-                DataTable data = RoomDAO.Instance.GetRoomByRoomid(int.Parse(id));
+                DataTable data = RoomBUS.Instance.GetRoomByRoomid(int.Parse(id));
                 foreach (DataRow item in data.Rows)
                 {
                     RoomDTO room = new RoomDTO(item);
@@ -101,21 +102,10 @@ namespace QuanLyCaoOc
                         lvItem.SubItems.Add(Price.ToString("c", culture));
                         lvRoom.Items.Add(lvItem);
                     }
-                //ListViewItem lvItem = new ListViewItem(item.MaPhong.ToString()); =>>> không biết sao lỗi 
-                //if (lvRoom.FindItemWithText(item.MaPhong.ToString()) == null)
-                //{
-                //    float Price = item.GiaCoBan + item.SoChoLamViec * 200000 + item.Tang * 500000;
-                //    lvItem.SubItems.Add(item.Tang.ToString());
-                //    lvItem.SubItems.Add(item.DTSuDung.ToString());
-                //    lvItem.SubItems.Add(item.SoChoLamViec.ToString());
-                //    lvItem.SubItems.Add(Price.ToString("c"));
-                //    lvRoom.Items.Add(lvItem);
-                //}
-                //else
-                //    MessageBox.Show("Phòng đả có trong danh sách vui lòng chọn phòng khác!");
+                   
 
-            }
-            ListRoomGB.AddRange(listRoom);
+                }
+                ListRoomGB.AddRange(listRoom);
                 CalSumMoney();
             }
             catch (Exception e)
@@ -147,11 +137,11 @@ namespace QuanLyCaoOc
         }
         private void Btn_Click(object sender, EventArgs e)
         {
-            int RoomID=((sender as Button).Tag as RoomDTO).MaPhong;
+            int RoomID = ((sender as Button).Tag as RoomDTO).MaPhong;
             txtIDRoom.Text = RoomID.ToString();
             txtAera.Text = ((sender as Button).Tag as RoomDTO).DTSuDung.ToString();
             txtNOW.Text = ((sender as Button).Tag as RoomDTO).SoChoLamViec.ToString();
-            txtAddress.Text= RoomDAO.Instance.GetAddressBuildingByRoomID(RoomID);
+            txtAddress.Text = RoomBUS.Instance.GetAddressBuildingByRoomID(RoomID);
         }
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -192,7 +182,7 @@ namespace QuanLyCaoOc
 
         private void btnAddListRoomRent_Click(object sender, EventArgs e)
         {
-               ShowListRoomRent(txtIDRoom.Text);
+            ShowListRoomRent(txtIDRoom.Text);
         }
 
         private void btnResetLV_Click(object sender, EventArgs e)

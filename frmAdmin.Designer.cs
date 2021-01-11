@@ -309,7 +309,8 @@ namespace QuanLyCaoOc
             this.txtPhoneCus.Name = "txtPhoneCus";
             this.txtPhoneCus.Size = new System.Drawing.Size(174, 20);
             this.txtPhoneCus.TabIndex = 3;
-            this.txtPhoneCus.TextChanged += new System.EventHandler(this.txtPhoneCus_TextChanged);
+            this.txtPhoneCus.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhoneCus_KeyPress);
+            this.txtPhoneCus.Leave += new System.EventHandler(this.txtPhoneCus_Leave);
             // 
             // label6
             // 
@@ -511,9 +512,7 @@ namespace QuanLyCaoOc
             this.cbbUserType.FormattingEnabled = true;
             this.cbbUserType.Items.AddRange(new object[] {
             "Admin",
-            "Quản Lý",
-            "Lễ Tân",
-            "Kế Toán"});
+            "Lễ Tân"});
             this.cbbUserType.Location = new System.Drawing.Point(139, 104);
             this.cbbUserType.Name = "cbbUserType";
             this.cbbUserType.Size = new System.Drawing.Size(172, 21);
