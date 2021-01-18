@@ -43,7 +43,6 @@ namespace QuanLyCaoOc
                 this.Hide();
                 f.ShowDialog();
                 this.Show();
-
             }
             else
                 MessageBox.Show("Sai tên tài khoản hoặc mật khẩu","Thông báo!");

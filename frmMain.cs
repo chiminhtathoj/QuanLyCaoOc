@@ -71,7 +71,7 @@ namespace QuanLyCaoOc
             List<RoomDTO> listRoom = new List<RoomDTO>();
             try
             {
-                DataTable data = RoomBUS.Instance.GetRoomByRoomid(int.Parse(id));
+                DataTable data = RoomBUS.Instance.GetRoomByRoomid(int.Parse(id)); //lấy 1 room
                 foreach (DataRow item in data.Rows)
                 {
                     RoomDTO room = new RoomDTO(item);
@@ -101,11 +101,10 @@ namespace QuanLyCaoOc
                         lvItem.SubItems.Add(item.SoChoLamViec.ToString());
                         lvItem.SubItems.Add(Price.ToString("c", culture));
                         lvRoom.Items.Add(lvItem);
+                        ListRoomGB.AddRange(listRoom);
                     }
-                   
-
                 }
-                ListRoomGB.AddRange(listRoom);
+                
                 CalSumMoney();
             }
             catch (Exception e)
@@ -219,5 +218,7 @@ namespace QuanLyCaoOc
         {
 
         }
+
+        
     }
 }

@@ -38,7 +38,7 @@ namespace QuanLyCaoOc
                 MessageBox.Show("Nhập lại mật khẩu không đúng", "Thông báo");
             else
             {
-                if (AccountDAO.Instance.UpdateAcc(username, passwork, newpass))
+                if (AccountDAO.Instance.ChangeInfoAcc(username, passwork, newpass))
                 {
                     MessageBox.Show("Cập nhật thành công");
                     this.Close();
