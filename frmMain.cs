@@ -46,7 +46,12 @@ namespace QuanLyCaoOc
             {
                 if (item.Tang == floor)
                 {
+<<<<<<< HEAD
                     Button btn = new Button() { Width = RoomBUS.width, Height = RoomBUS.height };
+=======
+
+                    Button btn = new Button() { Width = RoomDAO.width, Height = RoomDAO.height };
+>>>>>>> parent of 901d7c9... Hoàn thành các chức năng cơ bản
                     btn.Text = item.MaPhong + "\n" + item.TinhTrang;
                     btn.Click += Btn_Click;
                     btn.Tag = item;
@@ -55,7 +60,7 @@ namespace QuanLyCaoOc
                         case "Trống":
                             btn.BackColor = Color.Green;
                             break;
-                        case "Có Người":
+                        default:
                             btn.BackColor = Color.Red;
                             btn.Click -= Btn_Click;
                             break;

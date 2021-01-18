@@ -54,11 +54,9 @@ namespace QuanLyCaoOc
             this.btnSearchCusRent = new System.Windows.Forms.Button();
             this.dtgvListCusRent = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.dtgvBill = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRentalPeriod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListCusRent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -100,7 +98,6 @@ namespace QuanLyCaoOc
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dtgvBill);
             this.panel1.Controls.Add(this.dtpValidityConTract);
             this.panel1.Controls.Add(this.txtPriceRent);
             this.panel1.Controls.Add(this.txtMoney);
@@ -135,7 +132,6 @@ namespace QuanLyCaoOc
             this.dtpValidityConTract.Name = "dtpValidityConTract";
             this.dtpValidityConTract.Size = new System.Drawing.Size(100, 20);
             this.dtpValidityConTract.TabIndex = 32;
-            this.dtpValidityConTract.ValueChanged += new System.EventHandler(this.dtpValidityConTract_ValueChanged);
             // 
             // txtPriceRent
             // 
@@ -225,7 +221,6 @@ namespace QuanLyCaoOc
             this.dtpFirstPay.Name = "dtpFirstPay";
             this.dtpFirstPay.Size = new System.Drawing.Size(100, 20);
             this.dtpFirstPay.TabIndex = 3;
-            this.dtpFirstPay.ValueChanged += new System.EventHandler(this.dtpFirstPay_ValueChanged);
             // 
             // label7
             // 
@@ -313,19 +308,10 @@ namespace QuanLyCaoOc
             this.dtgvListCusRent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvListCusRent.Location = new System.Drawing.Point(3, 231);
             this.dtgvListCusRent.Name = "dtgvListCusRent";
-            this.dtgvListCusRent.ReadOnly = true;
             this.dtgvListCusRent.Size = new System.Drawing.Size(878, 269);
             this.dtgvListCusRent.TabIndex = 14;
             this.dtgvListCusRent.TabStop = false;
             this.dtgvListCusRent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvListCusRent_CellContentClick);
-            // 
-            // dtgvBill
-            // 
-            this.dtgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvBill.Location = new System.Drawing.Point(337, 12);
-            this.dtgvBill.Name = "dtgvBill";
-            this.dtgvBill.Size = new System.Drawing.Size(142, 48);
-            this.dtgvBill.TabIndex = 33;
             // 
             // frmRent
             // 
@@ -337,12 +323,11 @@ namespace QuanLyCaoOc
             this.Controls.Add(this.label9);
             this.Name = "frmRent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Hợp đồng thuê phòng";
+            this.Text = "frmRent";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRentalPeriod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListCusRent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,6 +359,5 @@ namespace QuanLyCaoOc
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtPriceRent;
         private System.Windows.Forms.DateTimePicker dtpValidityConTract;
-        private System.Windows.Forms.DataGridView dtgvBill;
     }
 }
