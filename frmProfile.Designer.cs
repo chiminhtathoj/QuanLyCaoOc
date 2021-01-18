@@ -195,7 +195,6 @@ namespace QuanLyCaoOc
             this.Controls.Add(this.panel2);
             this.Name = "frmProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Thông tin đăng nhập";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
